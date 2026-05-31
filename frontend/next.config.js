@@ -4,7 +4,9 @@ const shouldProxyApi = /^https?:\/\//.test(externalApiUrl)
 
 const nextConfig = {
   reactStrictMode: true,
+  output: 'export',
   images: {
+    unoptimized: true,
     domains: ['source.unsplash.com', 'images.unsplash.com'],
   },
   async rewrites() {
