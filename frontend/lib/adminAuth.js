@@ -1,5 +1,5 @@
 const DEFAULT_ADMIN_EMAILS = ['let@admin.com']
-const DEFAULT_CLIENT_EMAILS = ['labcoatsxd@gmail.com']
+const DEFAULT_CLIENT_EMAILS = ['dalotdoue@gmail.com']
 
 export function getAdminEmails(envValue = '') {
   return Array.from(new Set([

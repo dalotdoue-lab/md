@@ -11,7 +11,7 @@ const UserProfile = require('../models/UserProfile')
 const { projects, products, materials, adminSettings } = require('../data/mongoSeedData')
 const { getAdminEmails, isAdminEmail } = require('../config/adminEmails')
 
-const DEFAULT_CLIENT_EMAILS = ['labcoatsxd@gmail.com']
+const DEFAULT_CLIENT_EMAILS = ['dalotdoue@gmail.com']
 
 function getClientEmails() {
   return Array.from(new Set([
