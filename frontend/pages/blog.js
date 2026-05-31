@@ -78,14 +78,6 @@ const posts = [
 
 const categories = ['All', 'Investment', 'AI & Technology', 'Agriculture', 'Engineering', 'Market Insights']
 
-const categoryColors = {
-  'AI & Technology': 'bg-purple-100 text-purple-700',
-  'Agriculture': 'bg-green-100 text-green-700',
-  'Investment': 'bg-blue-100 text-blue-700',
-  'Engineering': 'bg-orange-100 text-orange-700',
-  'Market Insights': 'bg-red-100 text-red-700',
-}
-
 export default function Blog() {
   const [activeCategory, setActiveCategory] = useState('All')
 
@@ -99,38 +91,37 @@ export default function Blog() {
   return (
     <Layout>
       <HeroSection
-        title="Insights & Market Intelligence"
-        subtitle="Expert analysis, investment strategies, and technology insights from the Let Investments team."
-        ctaText="Subscribe to Newsletter"
+        eyebrow="Journal"
+        title="Insights & market intelligence"
+        subtitle="Analysis, investment strategy, and technology notes from the Let Investments team."
+        ctaText="Subscribe"
         ctaLink="/contact"
       />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom">
           {/* Featured Post */}
           {featuredPost && (
             <div className="mb-16">
-              <div className="inline-flex items-center px-4 py-2 bg-let-green/10 rounded-full mb-6">
-                <span className="text-let-green font-semibold text-sm">Featured Article</span>
-              </div>
-              <div className="bg-gradient-to-br from-let-blue to-let-accent rounded-2xl p-8 md:p-12 text-white">
+              <div className="eyebrow mb-6">Featured</div>
+              <div className="bg-ink rounded-lg p-8 md:p-12 text-paper">
                 <div className="max-w-3xl">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4 bg-white/20 text-white`}>
+                  <span className="block text-xs font-semibold uppercase tracking-label text-clay mb-5">
                     {featuredPost.category}
                   </span>
-                  <h2 className="text-3xl md:text-4xl font-heading font-bold mb-4 leading-tight">
+                  <h2 className="text-3xl md:text-4xl font-heading mb-4 leading-tight">
                     {featuredPost.title}
                   </h2>
-                  <p className="text-white/80 text-lg mb-6 leading-relaxed">{featuredPost.excerpt}</p>
-                  <div className="flex items-center gap-4 text-sm text-white/60 mb-8">
+                  <p className="text-paper/70 text-lg mb-6 leading-relaxed">{featuredPost.excerpt}</p>
+                  <div className="flex items-center gap-4 text-sm text-paper/50 mb-8">
                     <span>{featuredPost.author}</span>
                     <span>•</span>
                     <span>{featuredPost.date}</span>
                     <span>•</span>
                     <span>{featuredPost.readTime}</span>
                   </div>
-                  <Link href={`/blog/${featuredPost.id}`} className="bg-white text-let-blue hover:bg-let-light font-bold px-6 py-3 rounded-lg transition-all duration-300 inline-flex items-center">
-                    Read Full Article
+                  <Link href={`/blog/${featuredPost.id}`} className="bg-paper text-ink hover:bg-bone font-medium px-6 py-3 rounded-md transition-colors inline-flex items-center justify-center">
+                    Read full article
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -141,15 +132,15 @@ export default function Blog() {
           )}
 
           {/* Category Filter */}
-          <div className="flex flex-wrap gap-3 mb-10">
+          <div className="flex flex-wrap gap-2 mb-10 border-b border-line pb-4">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 ${
+                className={`px-4 py-2 rounded-md font-medium text-sm transition-colors duration-200 ${
                   activeCategory === cat
-                    ? 'bg-let-blue text-white shadow-md'
-                    : 'bg-let-light text-gray-700 hover:bg-let-blue/10'
+                    ? 'bg-ink text-paper'
+                    : 'text-ink-soft hover:bg-ink/5'
                 }`}
               >
                 {cat}
@@ -160,20 +151,20 @@ export default function Blog() {
           {/* Posts Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             {filteredPosts.map((post) => (
-              <article key={post.id} className="card flex flex-col group">
-                <div className="h-40 bg-let-light rounded-xl mb-4 flex items-center justify-center group-hover:bg-let-blue/5 transition-colors duration-300">
-                  <svg className="w-12 h-12 text-let-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <article key={post.id} className="card flex flex-col group cursor-pointer">
+                <div className="h-40 bg-bone rounded-md mb-5 flex items-center justify-center">
+                  <svg className="w-12 h-12 text-ink/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 </div>
-                <span className={`inline-block self-start px-3 py-1 rounded-full text-xs font-semibold mb-3 ${categoryColors[post.category] || 'bg-gray-100 text-gray-700'}`}>
+                <span className="block text-xs font-semibold uppercase tracking-label text-clay mb-3">
                   {post.category}
                 </span>
-                <h3 className="text-lg font-heading font-bold text-let-blue mb-2 leading-snug group-hover:text-let-accent transition-colors duration-200">
+                <h3 className="text-lg font-heading text-ink mb-2 leading-snug group-hover:text-olive-deep transition-colors duration-200">
                   {post.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed flex-1 mb-4">{post.excerpt}</p>
-                <div className="flex items-center justify-between text-xs text-gray-400 pt-4 border-t border-gray-100">
+                <p className="text-ink-soft text-sm leading-relaxed flex-1 mb-4">{post.excerpt}</p>
+                <div className="flex items-center justify-between text-xs text-ink-muted pt-4 border-t border-line">
                   <span>{post.author}</span>
                   <span>{post.readTime}</span>
                 </div>
@@ -183,10 +174,10 @@ export default function Blog() {
 
           {/* Pagination */}
           <div className="flex justify-center gap-2">
-            <button className="w-10 h-10 rounded-lg bg-let-blue text-white font-semibold">1</button>
-            <button className="w-10 h-10 rounded-lg bg-let-light text-gray-700 hover:bg-let-blue/10 font-semibold">2</button>
-            <button className="w-10 h-10 rounded-lg bg-let-light text-gray-700 hover:bg-let-blue/10 font-semibold">3</button>
-            <button className="w-10 h-10 rounded-lg bg-let-light text-gray-700 hover:bg-let-blue/10 font-semibold">
+            <button className="w-10 h-10 rounded-md bg-ink text-paper font-medium">1</button>
+            <button className="w-10 h-10 rounded-md text-ink-soft hover:bg-ink/5 font-medium">2</button>
+            <button className="w-10 h-10 rounded-md text-ink-soft hover:bg-ink/5 font-medium">3</button>
+            <button className="w-10 h-10 rounded-md text-ink-soft hover:bg-ink/5 font-medium">
               <svg className="w-4 h-4 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>

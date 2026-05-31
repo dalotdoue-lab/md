@@ -30,21 +30,21 @@ const DashboardStats = ({ stats }) => {
   }
 
   const colorClasses = {
-    blue: 'bg-blue-50 text-let-blue',
-    green: 'bg-green-50 text-let-green',
-    yellow: 'bg-yellow-50 text-yellow-600',
+    blue: 'bg-ink/5 text-ink',
+    green: 'bg-olive/10 text-olive-deep',
+    yellow: 'bg-clay/10 text-clay-deep',
   }
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {defaultStats.map((stat, index) => (
-        <div key={index} className="bg-white rounded-xl shadow-md p-6">
+        <div key={index} className="bg-paper border border-line shadow-card rounded-lg p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
-              <p className="text-2xl font-bold text-let-blue mt-1">{stat.value}</p>
+              <p className="text-xs text-ink-muted font-semibold uppercase tracking-label">{stat.label}</p>
+              <p className="text-3xl font-heading text-ink mt-2">{stat.value}</p>
             </div>
-            <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${colorClasses[stat.color]}`}>
+            <div className={`w-12 h-12 rounded-md flex items-center justify-center ${colorClasses[stat.color]}`}>
               {icons[stat.icon]}
             </div>
           </div>

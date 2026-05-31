@@ -124,35 +124,37 @@ export default function Services() {
   return (
     <Layout>
       <HeroSection
-        title="Comprehensive Solutions for Growth"
+        eyebrow="Our Services"
+        title="Comprehensive solutions for growth"
         subtitle="From investment management to AI consulting and smart agriculture, we deliver integrated solutions that create real, measurable value."
-        ctaText="Get a Quote"
+        ctaText="Get a quote"
         ctaLink="/quote"
-        secondaryCtaText="Talk to Us"
+        secondaryCtaText="Talk to us"
         secondaryCtaLink="/contact"
       />
 
       {/* Services Grid */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">What We Do</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Six core service areas, all backed by expert teams and cutting-edge technology.
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">What We Do</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">Six core service areas</h2>
+            <p className="text-lg text-ink-soft leading-relaxed">
+              All backed by expert teams and the technology to deliver them well.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, i) => (
-              <div key={i} className="card group">
-                <div className={`w-16 h-16 rounded-2xl bg-${service.color}/10 flex items-center justify-center mb-5 text-${service.color} group-hover:scale-110 transition-transform duration-300`}>
+              <div key={i} className="card">
+                <div className="text-clay mb-5">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-heading font-bold text-let-blue mb-3">{service.title}</h3>
-                <p className="text-gray-600 mb-5 leading-relaxed">{service.description}</p>
-                <ul className="space-y-2">
+                <h3 className="text-xl font-heading text-ink mb-3">{service.title}</h3>
+                <p className="text-ink-soft mb-5 leading-relaxed">{service.description}</p>
+                <ul className="space-y-2 pt-5 border-t border-line">
                   {service.features.map((f, fi) => (
-                    <li key={fi} className="flex items-center text-sm text-gray-700">
-                      <svg className="w-4 h-4 text-let-green mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <li key={fi} className="flex items-center text-sm text-ink-soft">
+                      <svg className="w-4 h-4 text-olive mr-2.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {f}
@@ -166,22 +168,21 @@ export default function Services() {
       </section>
 
       {/* Process */}
-      <section className="section-padding bg-let-light">
+      <section className="section-padding bg-bone">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">How We Work</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              A proven four-step process designed for clarity, efficiency, and results.
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">How We Work</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">A clear, four-step process</h2>
+            <p className="text-lg text-ink-soft leading-relaxed">
+              Designed for clarity, efficiency, and results you can see.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-10">
             {process.map((step, i) => (
-              <div key={i} className="card text-center group">
-                <div className="text-5xl font-heading font-extrabold text-let-blue/10 mb-4 group-hover:text-let-green/20 transition-colors duration-300">
-                  {step.step}
-                </div>
-                <h3 className="text-xl font-heading font-bold text-let-blue mb-3">{step.title}</h3>
-                <p className="text-gray-600 leading-relaxed text-sm">{step.description}</p>
+              <div key={i} className="border-t-2 border-ink pt-5">
+                <div className="font-heading text-2xl text-clay mb-3">{step.step}</div>
+                <h3 className="text-xl font-heading text-ink mb-3">{step.title}</h3>
+                <p className="text-ink-soft leading-relaxed text-sm">{step.description}</p>
               </div>
             ))}
           </div>
@@ -189,22 +190,22 @@ export default function Services() {
       </section>
 
       {/* FAQ */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom max-w-3xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">Frequently Asked Questions</h2>
-            <p className="text-xl text-gray-600">Quick answers to your most common questions.</p>
+          <div className="mb-14">
+            <div className="eyebrow mb-5">FAQ</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink leading-tight">Frequently asked questions</h2>
           </div>
-          <div className="space-y-4">
+          <div className="divide-y divide-line border-y border-line">
             {faqs.map((faq, i) => (
-              <div key={i} className="border border-gray-200 rounded-xl overflow-hidden">
+              <div key={i}>
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="w-full flex justify-between items-center p-6 text-left hover:bg-let-light transition-colors duration-200"
+                  className="w-full flex justify-between items-center py-5 text-left group"
                 >
-                  <span className="font-semibold text-let-blue text-lg">{faq.question}</span>
+                  <span className="font-heading text-ink text-lg pr-4 group-hover:text-olive-deep transition-colors">{faq.question}</span>
                   <svg
-                    className={`w-5 h-5 text-let-blue transition-transform duration-300 flex-shrink-0 ml-4 ${openFaq === i ? 'rotate-180' : ''}`}
+                    className={`w-5 h-5 text-ink-muted transition-transform duration-300 flex-shrink-0 ${openFaq === i ? 'rotate-180' : ''}`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -213,7 +214,7 @@ export default function Services() {
                   </svg>
                 </button>
                 {openFaq === i && (
-                  <div className="px-6 pb-6 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                  <div className="pb-6 -mt-1 text-ink-soft leading-relaxed max-w-2xl">
                     {faq.answer}
                   </div>
                 )}
@@ -224,19 +225,21 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-let-blue to-let-accent py-20">
-        <div className="container-custom text-center">
-          <h2 className="text-4xl font-heading font-bold text-white mb-6">Ready to Get Started?</h2>
-          <p className="text-xl text-white/80 mb-10 max-w-xl mx-auto">
-            Request a free quote or schedule a consultation with one of our experts today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/quote" className="bg-white text-let-blue hover:bg-let-light font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300">
-              Request a Quote
-            </Link>
-            <Link href="/contact" className="border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300 inline-flex items-center justify-center">
-              Contact Us
-            </Link>
+      <section className="bg-ink py-24">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-heading text-paper mb-6 leading-tight">Ready to get started?</h2>
+            <p className="text-lg text-paper/70 mb-10 max-w-xl mx-auto leading-relaxed">
+              Request a quote or schedule a consultation with one of our experts.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/quote" className="bg-paper text-ink hover:bg-bone font-medium px-7 py-3.5 rounded-md transition-colors inline-flex items-center justify-center">
+                Request a quote
+              </Link>
+              <Link href="/contact" className="border border-paper/30 text-paper hover:bg-paper/10 font-medium px-7 py-3.5 rounded-md transition-colors inline-flex items-center justify-center">
+                Contact us
+              </Link>
+            </div>
           </div>
         </div>
       </section>

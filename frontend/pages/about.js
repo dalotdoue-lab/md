@@ -99,38 +99,39 @@ export default function About() {
   return (
     <Layout>
       <HeroSection
-        title="Building Africa's Investment Future"
-        subtitle="Since 2009, Let Investments has combined financial expertise, engineering innovation, and AI-powered technology to create lasting value for our clients and communities."
-        ctaText="Our Services"
+        eyebrow="About Let Investments"
+        title="Building Africa's investment future"
+        subtitle="Since 2009, Let Investments has combined financial expertise, engineering innovation, and applied technology to create lasting value for our clients and communities."
+        ctaText="Our services"
         ctaLink="/services"
-        secondaryCtaText="Meet the Team"
+        secondaryCtaText="Meet the team"
         secondaryCtaLink="#team"
       />
 
       {/* Mission & Vision */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="card border-l-4 border-let-blue">
-              <div className="w-12 h-12 bg-let-blue/10 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-let-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            <div className="card border-l-2 border-olive">
+              <div className="w-12 h-12 bg-olive/10 rounded-md flex items-center justify-center mb-5 text-olive-deep">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-heading font-bold text-let-blue mb-3">Our Mission</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-heading text-ink mb-3">Our mission</h3>
+              <p className="text-ink-soft leading-relaxed">
                 To empower individuals, businesses, and institutions across Africa with world-class investment management, engineering excellence, and technology innovation — creating sustainable wealth and lasting impact.
               </p>
             </div>
-            <div className="card border-l-4 border-let-green">
-              <div className="w-12 h-12 bg-let-green/10 rounded-xl flex items-center justify-center mb-4">
-                <svg className="w-6 h-6 text-let-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            <div className="card border-l-2 border-clay">
+              <div className="w-12 h-12 bg-clay/10 rounded-md flex items-center justify-center mb-5 text-clay-deep">
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-heading font-bold text-let-blue mb-3">Our Vision</h3>
-              <p className="text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-heading text-ink mb-3">Our vision</h3>
+              <p className="text-ink-soft leading-relaxed">
                 To be Africa's most trusted and innovative investment company — recognized for exceptional returns, technological leadership, and transformative impact on communities across the continent and beyond.
               </p>
             </div>
@@ -139,30 +140,25 @@ export default function About() {
       </section>
 
       {/* Company Story */}
-      <section className="section-padding bg-let-light">
+      <section className="section-padding bg-bone">
         <div className="container-custom">
-          <div className="max-w-3xl mx-auto text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">Our Story</h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
-              Founded in 2009 by David Mwangi, Let Investments began as a boutique real estate investment firm in Nairobi. What started as a one-man operation guided by a belief that African investors deserved better has grown into a multi-disciplinary powerhouse managing over $50M in assets and delivering transformative engineering and technology solutions across the continent.
+          <div className="max-w-3xl mb-16">
+            <div className="eyebrow mb-5">Our Story</div>
+            <p className="font-heading text-2xl md:text-3xl text-ink leading-snug">
+              Founded in 2009 by David Mwangi, Let Investments began as a boutique real estate
+              firm in Nairobi — a one-man operation built on the belief that African investors
+              deserved better. Today it manages over $50M in assets and delivers engineering and
+              technology work across the continent.
             </p>
           </div>
           {/* Timeline */}
-          <div className="relative">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-let-blue/20 hidden md:block"></div>
-            <div className="space-y-8">
+          <div className="border-l border-line ml-2 md:ml-0">
+            <div className="space-y-10">
               {milestones.map((m, i) => (
-                <div key={i} className={`flex flex-col md:flex-row items-center gap-4 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                  <div className={`w-full md:w-5/12 ${i % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                    <div className="card inline-block max-w-full">
-                      <div className="text-let-green font-bold text-lg mb-1">{m.year}</div>
-                      <p className="text-gray-700">{m.event}</p>
-                    </div>
-                  </div>
-                  <div className="hidden md:flex w-2/12 justify-center">
-                    <div className="w-4 h-4 bg-let-blue rounded-full border-4 border-white shadow-md z-10"></div>
-                  </div>
-                  <div className="hidden md:block w-5/12"></div>
+                <div key={i} className="relative pl-8">
+                  <span className="absolute left-0 top-1.5 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-clay ring-4 ring-bone"></span>
+                  <div className="font-heading text-xl text-ink mb-1">{m.year}</div>
+                  <p className="text-ink-soft leading-relaxed max-w-xl">{m.event}</p>
                 </div>
               ))}
             </div>
@@ -171,23 +167,24 @@ export default function About() {
       </section>
 
       {/* Team */}
-      <section id="team" className="section-padding bg-white">
+      <section id="team" className="section-padding bg-paper">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">Meet Our Leadership</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              A diverse team of experts united by a passion for innovation and a commitment to client success.
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">Leadership</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">Meet the people behind the work</h2>
+            <p className="text-lg text-ink-soft leading-relaxed">
+              A team of experts united by a passion for innovation and a commitment to client success.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map((member, i) => (
-              <div key={i} className="card text-center group">
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-let-blue to-let-accent flex items-center justify-center text-white text-3xl font-bold mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+              <div key={i} className="card">
+                <div className="w-16 h-16 rounded-full bg-ink flex items-center justify-center text-paper text-2xl font-heading mb-5">
                   {member.initial}
                 </div>
-                <h3 className="text-xl font-heading font-bold text-let-blue mb-1">{member.name}</h3>
-                <p className="text-let-green font-semibold text-sm mb-3">{member.title}</p>
-                <p className="text-gray-600 text-sm leading-relaxed">{member.bio}</p>
+                <h3 className="text-xl font-heading text-ink mb-1">{member.name}</h3>
+                <p className="text-xs font-semibold uppercase tracking-label text-clay mb-4">{member.title}</p>
+                <p className="text-ink-soft text-sm leading-relaxed">{member.bio}</p>
               </div>
             ))}
           </div>
@@ -195,22 +192,23 @@ export default function About() {
       </section>
 
       {/* Values */}
-      <section className="section-padding bg-let-blue">
+      <section className="section-padding bg-ink">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-white mb-4">Our Core Values</h2>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              The principles that guide every decision, every project, every investment.
-            </p>
+          <div className="max-w-2xl mb-14">
+            <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-label text-paper/60 mb-5">
+              <span className="inline-block w-7 h-px bg-clay"></span>
+              What We Stand For
+            </div>
+            <h2 className="text-4xl md:text-5xl font-heading text-paper leading-tight">Our core values</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-paper/10 border border-paper/10 rounded-lg overflow-hidden">
             {values.map((v, i) => (
-              <div key={i} className="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition-colors duration-300">
-                <div className="w-11 h-11 rounded-lg bg-white/15 flex items-center justify-center mb-4 text-white">
+              <div key={i} className="bg-ink p-8 hover:bg-olive-deep/40 transition-colors duration-300">
+                <div className="text-clay mb-4">
                   {v.icon}
                 </div>
-                <h3 className="text-xl font-heading font-bold text-white mb-2">{v.title}</h3>
-                <p className="text-gray-300 leading-relaxed">{v.description}</p>
+                <h3 className="text-xl font-heading text-paper mb-2">{v.title}</h3>
+                <p className="text-paper/70 leading-relaxed">{v.description}</p>
               </div>
             ))}
           </div>
@@ -218,18 +216,18 @@ export default function About() {
       </section>
 
       {/* Stats */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 divide-line md:divide-x">
             {[
               { value: '500+', label: 'Clients Worldwide' },
               { value: '$50M+', label: 'Assets Under Management' },
               { value: '80+', label: 'Projects Completed' },
               { value: '12', label: 'African Countries' },
             ].map((stat, i) => (
-              <div key={i}>
-                <div className="text-4xl font-heading font-extrabold text-let-blue mb-2">{stat.value}</div>
-                <div className="text-gray-500 font-medium">{stat.label}</div>
+              <div key={i} className="text-center md:px-4">
+                <div className="text-4xl md:text-5xl font-heading text-ink mb-2">{stat.value}</div>
+                <div className="text-xs font-semibold uppercase tracking-label text-ink-muted">{stat.label}</div>
               </div>
             ))}
           </div>

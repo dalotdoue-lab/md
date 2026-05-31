@@ -42,30 +42,31 @@ export default function Contact() {
   return (
     <Layout>
       {/* Hero */}
-      <section className="bg-let-blue py-16">
+      <section className="bg-ink py-20">
         <div className="container-custom">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-4">
-              <span className="text-white/80 text-sm font-medium">Get in Touch</span>
+            <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-label text-paper/60 mb-6">
+              <span className="inline-block w-7 h-px bg-clay"></span>
+              Get in Touch
             </div>
-            <h1 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-              Contact Us
+            <h1 className="text-4xl md:text-5xl font-heading text-paper mb-4 leading-tight">
+              Let's talk
             </h1>
-            <p className="text-xl text-gray-300">
-              Have a question or ready to start your investment journey? Our team is here to help.
+            <p className="text-lg text-paper/70 leading-relaxed">
+              Have a question, or ready to start your investment journey? Our team is here to help.
             </p>
           </div>
         </div>
       </section>
 
       {/* Contact Content */}
-      <section className="section-padding bg-let-light">
+      <section className="section-padding bg-bone">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Form */}
             <div className="lg:col-span-2">
               <div className="card">
-                <h2 className="text-2xl font-heading font-bold text-let-blue mb-6">Send Us a Message</h2>
+                <h2 className="text-2xl font-heading text-ink mb-6">Send us a message</h2>
                 <ContactForm />
               </div>
             </div>
@@ -75,12 +76,12 @@ export default function Contact() {
               {contactInfo.map((info, i) => (
                 <div key={i} className="card">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-let-blue/10 rounded-xl flex items-center justify-center text-let-blue flex-shrink-0">
+                    <div className="text-clay flex-shrink-0 mt-0.5">
                       {info.icon}
                     </div>
                     <div>
-                      <h3 className="font-bold text-let-blue mb-1">{info.title}</h3>
-                      <p className="text-gray-600 text-sm whitespace-pre-line">{info.detail}</p>
+                      <h3 className="font-heading text-ink mb-1">{info.title}</h3>
+                      <p className="text-ink-soft text-sm whitespace-pre-line leading-relaxed">{info.detail}</p>
                     </div>
                   </div>
                 </div>
@@ -88,17 +89,17 @@ export default function Contact() {
 
               {/* Office Hours */}
               <div className="card">
-                <h3 className="font-bold text-let-blue mb-4 flex items-center gap-2">
-                  <svg className="w-5 h-5 text-let-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <h3 className="font-heading text-ink mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-clay" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Office Hours
+                  Office hours
                 </h3>
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   {officeHours.map((h, i) => (
                     <div key={i} className="flex justify-between text-sm">
-                      <span className="text-gray-600">{h.day}</span>
-                      <span className={`font-semibold ${h.hours === 'Closed' ? 'text-red-500' : 'text-let-blue'}`}>
+                      <span className="text-ink-soft">{h.day}</span>
+                      <span className={`font-semibold ${h.hours === 'Closed' ? 'text-clay-deep' : 'text-ink'}`}>
                         {h.hours}
                       </span>
                     </div>
@@ -110,13 +111,13 @@ export default function Contact() {
 
           {/* Map Placeholder */}
           <div className="mt-10">
-            <div className="w-full h-72 bg-let-blue/10 rounded-2xl flex items-center justify-center border-2 border-dashed border-let-blue/30">
+            <div className="w-full h-72 bg-paper rounded-lg flex items-center justify-center border border-line">
               <div className="text-center">
-                <svg className="w-16 h-16 text-let-blue/30 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-14 h-14 text-ink/20 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                 </svg>
-                <p className="text-let-blue/50 font-semibold text-lg">Interactive Map</p>
-                <p className="text-let-blue/30 text-sm">Upper Hill, Nairobi, Kenya</p>
+                <p className="font-heading text-ink-soft text-lg">Upper Hill, Nairobi</p>
+                <p className="text-ink-muted text-sm">Kenya</p>
               </div>
             </div>
           </div>

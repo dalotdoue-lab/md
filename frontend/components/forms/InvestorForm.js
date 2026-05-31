@@ -207,13 +207,13 @@ const InvestorForm = () => {
       </div>
 
       {submitStatus === 'success' && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-          Thank you for your interest! Our investor relations team will contact you within 2-3 business days.
+        <div className="bg-olive/10 border border-olive/30 text-olive-deep px-4 py-3 rounded-md text-sm">
+          Thank you for your interest — our investor relations team will contact you within 2–3 business days.
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+        <div className="bg-clay/10 border border-clay/30 text-clay-deep px-4 py-3 rounded-md text-sm">
           There was an error submitting your inquiry. Please try again.
         </div>
       )}

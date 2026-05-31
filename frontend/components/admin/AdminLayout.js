@@ -5,31 +5,31 @@ const AdminLayout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      
+    <div className="flex min-h-screen bg-bone">
+
       {/* Sidebar */}
-      <AdminSidebar 
-        isOpen={isSidebarOpen} 
-        setIsOpen={setIsSidebarOpen} 
+      <AdminSidebar
+        isOpen={isSidebarOpen}
+        setIsOpen={setIsSidebarOpen}
       />
 
       {/* Main Area */}
       <div className="flex-1 flex flex-col">
-        
+
         {/* Top Bar */}
-        <div className="bg-white shadow px-6 py-4 flex justify-between items-center">
+        <div className="bg-paper border-b border-line px-6 py-4 flex justify-between items-center">
           <button
             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-            className="text-gray-600 lg:hidden"
+            className="text-ink-soft lg:hidden"
           >
             ☰
           </button>
 
-          <h1 className="text-lg font-bold text-gray-800">
-            Admin Dashboard
+          <h1 className="text-lg font-heading text-ink">
+            Admin dashboard
           </h1>
 
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-ink-soft">
             Admin User
           </div>
         </div>

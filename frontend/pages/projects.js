@@ -106,30 +106,31 @@ export default function Projects() {
   return (
     <Layout>
       <HeroSection
-        title="Our Project Portfolio"
-        subtitle="Explore our diverse range of completed and ongoing projects across engineering, investment, technology, and agriculture sectors."
-        ctaText="Start a Project"
+        eyebrow="Portfolio"
+        title="The work, across every sector"
+        subtitle="Completed and ongoing projects spanning engineering, investment, technology, and agriculture."
+        ctaText="Start a project"
         ctaLink="/quote"
-        secondaryCtaText="Contact Us"
+        secondaryCtaText="Contact us"
         secondaryCtaLink="/contact"
       />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom">
           {/* Filter Buttons */}
-          <div className="flex flex-wrap gap-3 justify-center mb-12">
+          <div className="flex flex-wrap gap-2 mb-12 border-b border-line pb-4">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                className={`px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200 inline-flex items-center gap-2 ${
                   activeFilter === cat
-                    ? 'bg-let-blue text-white shadow-md'
-                    : 'bg-let-light text-gray-700 hover:bg-let-blue/10 hover:text-let-blue'
+                    ? 'bg-ink text-paper'
+                    : 'text-ink-soft hover:bg-ink/5'
                 }`}
               >
                 {cat}
-                <span className="ml-2 bg-white/20 text-xs px-2 py-0.5 rounded-full">
+                <span className={`text-xs ${activeFilter === cat ? 'text-paper/60' : 'text-ink-muted'}`}>
                   {countFor(cat)}
                 </span>
               </button>
@@ -154,25 +155,25 @@ export default function Projects() {
 
           {filtered.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">No projects found in this category.</p>
+              <p className="text-ink-muted text-lg">No projects found in this category.</p>
             </div>
           )}
         </div>
       </section>
 
       {/* Stats */}
-      <section className="bg-let-blue py-16">
+      <section className="bg-ink py-20">
         <div className="container-custom">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 divide-paper/10 md:divide-x">
             {[
               { value: '80+', label: 'Projects Completed' },
               { value: '12', label: 'African Countries' },
               { value: '$50M+', label: 'Project Value' },
               { value: '98%', label: 'On-Time Delivery' },
             ].map((stat, i) => (
-              <div key={i}>
-                <div className="text-4xl font-heading font-extrabold text-white mb-2">{stat.value}</div>
-                <div className="text-gray-300 font-medium">{stat.label}</div>
+              <div key={i} className="text-center md:px-4">
+                <div className="text-4xl md:text-5xl font-heading text-paper mb-2">{stat.value}</div>
+                <div className="text-xs font-semibold uppercase tracking-label text-paper/50">{stat.label}</div>
               </div>
             ))}
           </div>

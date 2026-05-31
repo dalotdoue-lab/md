@@ -120,13 +120,13 @@ const ContactForm = () => {
       </div>
 
       {submitStatus === 'success' && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
-          Thank you! Your message has been sent successfully. We'll get back to you soon.
+        <div className="bg-olive/10 border border-olive/30 text-olive-deep px-4 py-3 rounded-md text-sm">
+          Thank you — your message has been sent. We'll get back to you soon.
         </div>
       )}
 
       {submitStatus === 'error' && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+        <div className="bg-clay/10 border border-clay/30 text-clay-deep px-4 py-3 rounded-md text-sm">
           Something went wrong. Please try again or contact us directly.
         </div>
       )}

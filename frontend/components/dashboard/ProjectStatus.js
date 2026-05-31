@@ -26,38 +26,38 @@ const ProjectStatus = ({ projects }) => {
   const displayProjects = projects || defaultProjects
 
   const statusColors = {
-    completed: { bg: 'bg-green-100', text: 'text-green-800', label: 'Completed' },
-    in_progress: { bg: 'bg-blue-100', text: 'text-blue-800', label: 'In Progress' },
-    planning: { bg: 'bg-yellow-100', text: 'text-yellow-800', label: 'Planning' },
-    on_hold: { bg: 'bg-gray-100', text: 'text-gray-800', label: 'On Hold' },
+    completed: { bg: 'bg-olive/15', text: 'text-olive-deep', label: 'Completed' },
+    in_progress: { bg: 'bg-clay/15', text: 'text-clay-deep', label: 'In Progress' },
+    planning: { bg: 'bg-ink/5', text: 'text-ink-soft', label: 'Planning' },
+    on_hold: { bg: 'bg-ink/5', text: 'text-ink-muted', label: 'On Hold' },
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden">
-      <div className="px-6 py-4 border-b border-gray-200">
-        <h3 className="text-lg font-heading font-bold text-let-blue">Project Status</h3>
+    <div className="bg-paper border border-line shadow-card rounded-lg overflow-hidden">
+      <div className="px-6 py-4 border-b border-line">
+        <h3 className="text-lg font-heading text-ink">Project status</h3>
       </div>
-      <div className="divide-y divide-gray-200">
+      <div className="divide-y divide-line">
         {displayProjects.map((project) => (
           <div key={project.id} className="p-6">
-            <div className="flex items-start justify-between mb-3">
+            <div className="flex items-start justify-between gap-3 mb-3">
               <div>
-                <h4 className="font-semibold text-gray-900">{project.name}</h4>
-                <p className="text-sm text-gray-500 mt-1">Due: {project.dueDate}</p>
+                <h4 className="font-heading text-ink">{project.name}</h4>
+                <p className="text-sm text-ink-muted mt-1">Due: {project.dueDate}</p>
               </div>
-              <span className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[project.status].bg} ${statusColors[project.status].text}`}>
+              <span className={`px-2.5 py-1 rounded text-xs font-semibold uppercase tracking-wide ${statusColors[project.status].bg} ${statusColors[project.status].text}`}>
                 {statusColors[project.status].label}
               </span>
             </div>
             <div className="mt-3">
-              <div className="flex justify-between text-sm mb-1">
-                <span className="text-gray-600">Progress</span>
-                <span className="font-semibold text-let-blue">{project.progress}%</span>
+              <div className="flex justify-between text-sm mb-1.5">
+                <span className="text-ink-soft">Progress</span>
+                <span className="font-semibold text-ink">{project.progress}%</span>
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className={`h-2 rounded-full transition-all duration-500 ${
-                    project.status === 'completed' ? 'bg-let-green' : 'bg-let-blue'
+              <div className="w-full bg-line rounded-full h-1.5">
+                <div
+                  className={`h-1.5 rounded-full transition-all duration-500 ${
+                    project.status === 'completed' ? 'bg-olive' : 'bg-ink'
                   }`}
                   style={{ width: `${project.progress}%` }}
                 ></div>

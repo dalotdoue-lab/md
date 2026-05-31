@@ -47,33 +47,33 @@ const sections = [
 export default function Terms() {
   return (
     <Layout>
-      <div className="bg-let-blue py-16">
+      <div className="bg-ink py-20">
         <div className="container-custom max-w-3xl">
-          <h1 className="text-4xl font-heading font-bold text-white mb-3">Terms of Service</h1>
-          <p className="text-gray-300">Last updated: May 1, 2026</p>
+          <h1 className="text-4xl md:text-5xl font-heading text-paper mb-3 leading-tight">Terms of service</h1>
+          <p className="text-paper/60 text-sm font-semibold uppercase tracking-label">Last updated: May 1, 2026</p>
         </div>
       </div>
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom max-w-3xl">
-          <p className="text-gray-600 text-lg leading-relaxed mb-10">
-            Please read these Terms of Service carefully before using the Let Investments website or services. These terms constitute a legal agreement between you and Let Investments Ltd.
+          <p className="text-ink-soft text-lg leading-relaxed mb-12">
+            Please read these terms carefully before using the Let Investments website or services. They constitute a legal agreement between you and Let Investments Ltd.
           </p>
 
           <div className="space-y-8">
             {sections.map((section, i) => (
-              <div key={i} className="border-b border-gray-100 pb-8 last:border-0">
-                <h2 className="text-xl font-heading font-bold text-let-blue mb-3">{section.title}</h2>
-                <p className="text-gray-600 leading-relaxed">{section.content}</p>
+              <div key={i} className="border-b border-line pb-8 last:border-0">
+                <h2 className="text-xl font-heading text-ink mb-3">{section.title}</h2>
+                <p className="text-ink-soft leading-relaxed">{section.content}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-12 pt-8 border-t border-gray-100 text-center">
-            <p className="text-gray-500 mb-4">Need clarification on any of these terms?</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-primary">Contact Us</Link>
-              <Link href="/privacy" className="btn-outline">Privacy Policy</Link>
+          <div className="mt-12 pt-8 border-t border-line">
+            <p className="text-ink-soft mb-4">Need clarification on any of these terms?</p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link href="/contact" className="btn-primary">Contact us</Link>
+              <Link href="/privacy" className="btn-outline">Privacy policy</Link>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,42 +6,68 @@
 
 @layer base {
   html {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-bone text-ink-soft;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Fraunces', Georgia, serif;
+    @apply text-ink;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    @apply bg-olive/20 text-ink;
   }
 }
 
 @layer components {
+  /* Buttons — solid, squared-off, no gradients. */
   .btn-primary {
-    @apply bg-let-blue text-white px-6 py-2.5 rounded-md font-medium tracking-wide shadow-sm hover:bg-let-accent active:opacity-90 active:scale-[0.99] transition-all duration-200 inline-flex items-center justify-center;
+    @apply bg-ink text-paper px-6 py-3 rounded-md font-medium hover:bg-olive-deep active:scale-[0.99] transition-colors duration-200 inline-flex items-center justify-center;
   }
   .btn-secondary {
-    @apply bg-let-green text-white px-6 py-2.5 rounded-md font-medium tracking-wide shadow-sm hover:opacity-90 active:opacity-80 active:scale-[0.99] transition-all duration-200 inline-flex items-center justify-center;
+    @apply bg-olive text-paper px-6 py-3 rounded-md font-medium hover:bg-olive-deep active:scale-[0.99] transition-colors duration-200 inline-flex items-center justify-center;
   }
   .btn-outline {
-    @apply border border-let-blue text-let-blue px-6 py-2.5 rounded-md font-medium tracking-wide hover:bg-let-blue hover:text-white transition-all duration-200 inline-flex items-center justify-center;
+    @apply border border-ink/25 text-ink px-6 py-3 rounded-md font-medium hover:bg-ink hover:text-paper hover:border-ink transition-colors duration-200 inline-flex items-center justify-center;
   }
   .btn-danger {
-    @apply bg-red-600 text-white px-6 py-2.5 rounded-md font-medium tracking-wide shadow-sm hover:bg-red-700 active:opacity-90 active:scale-[0.99] transition-all duration-200 inline-flex items-center justify-center;
+    @apply bg-clay-deep text-paper px-6 py-3 rounded-md font-medium hover:bg-clay active:scale-[0.99] transition-colors duration-200 inline-flex items-center justify-center;
   }
   .btn-ghost {
-    @apply text-let-blue px-6 py-2.5 rounded-md font-medium hover:bg-let-light transition-all duration-200 inline-flex items-center justify-center;
+    @apply text-ink px-6 py-3 rounded-md font-medium hover:bg-ink/5 transition-colors duration-200 inline-flex items-center justify-center;
   }
+
+  /* Cards — flatter, bordered, warm. */
   .card {
-    @apply bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow duration-300;
+    @apply bg-paper rounded-lg border border-line shadow-card p-6 transition-all duration-300 hover:shadow-lift hover:-translate-y-0.5;
   }
+
+  /* Forms */
   .input-field {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-let-blue focus:border-transparent transition-all duration-200;
+    @apply w-full px-4 py-3 bg-paper border border-line rounded-md text-ink placeholder:text-ink-muted focus:outline-none focus:border-olive focus:ring-1 focus:ring-olive transition-colors duration-200;
   }
   .label {
-    @apply block text-sm font-semibold text-gray-700 mb-2;
+    @apply block text-sm font-semibold text-ink mb-2;
   }
+
+  /* Eyebrow label — replaces the rounded pill badges. */
+  .eyebrow {
+    @apply inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-label text-ink-muted;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply inline-block w-7 h-px bg-clay;
+  }
+
   .container-custom {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28;
   }
 }

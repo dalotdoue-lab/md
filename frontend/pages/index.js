@@ -183,68 +183,46 @@ export default function Home() {
   return (
     <Layout fullWidth>
       {/* Hero Section */}
-      <section className="relative bg-let-blue overflow-hidden min-h-screen flex items-center">
-        <div className="absolute inset-0 opacity-10">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-              <pattern id="grid" width="5" height="5" patternUnits="userSpaceOnUse">
-                <path d="M 5 0 L 0 0 0 5" fill="none" stroke="white" strokeWidth="0.3" />
-              </pattern>
-            </defs>
-            <rect width="100" height="100" fill="url(#grid)" />
-          </svg>
-        </div>
-        <div className="absolute right-0 top-0 w-1/2 h-full opacity-10">
-          <div className="w-full h-full bg-gradient-to-l from-let-green to-transparent"></div>
-        </div>
-
-        <div className="relative container-custom py-24 md:py-32">
+      <section className="relative bg-ink overflow-hidden">
+        <div className="relative container-custom py-28 md:py-36 lg:py-44">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center px-4 py-2 bg-white/10 rounded-full mb-6">
-              <span className="w-2 h-2 bg-let-green rounded-full mr-2 animate-pulse"></span>
-              <span className="text-white/80 text-sm font-medium">Trusted Investment Partner Since 2009</span>
+            <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-label text-paper/60 mb-8">
+              <span className="inline-block w-7 h-px bg-clay"></span>
+              Trusted Investment Partner Since 2009
             </div>
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading font-extrabold text-white mb-6 leading-tight">
-              Grow Your Future with{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-let-green to-emerald-300">
-                Smart Investments
-              </span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-heading text-paper mb-8 leading-[1.04]">
+              Grow your future with{' '}
+              <em className="text-clay not-italic font-normal italic">smart investments</em>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
-              We combine cutting-edge AI, engineering expertise, and financial acumen to deliver exceptional returns and sustainable growth for our clients.
+            <p className="text-lg md:text-xl text-paper/70 mb-10 leading-relaxed max-w-2xl">
+              We combine engineering expertise, financial acumen, and applied AI to deliver
+              exceptional returns and sustainable growth for our clients.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link href="/get-started" className="btn-secondary text-lg px-8 py-4">
-                Get Started Today
+              <Link href="/get-started" className="bg-paper text-ink px-7 py-3.5 rounded-md font-medium hover:bg-bone transition-colors inline-flex items-center justify-center">
+                Get started today
                 <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
-              <Link href="/about" className="border-2 border-white text-white hover:bg-white hover:text-let-blue transition-all duration-300 text-lg px-8 py-4 rounded-lg font-semibold inline-flex items-center justify-center">
-                Learn More
+              <Link href="/about" className="border border-paper/30 text-paper hover:bg-paper/10 transition-colors px-7 py-3.5 rounded-md font-medium inline-flex items-center justify-center">
+                Learn more
               </Link>
             </div>
           </div>
         </div>
-
-        {/* Wave */}
-        <div className="absolute bottom-0 left-0 right-0">
-          <svg viewBox="0 0 1440 80" preserveAspectRatio="none" className="w-full h-16 md:h-20">
-            <path fill="white" d="M0,40L80,45C160,50,320,60,480,58C640,56,800,44,960,38C1120,32,1280,36,1360,38L1440,40L1440,80L0,80Z" />
-          </svg>
-        </div>
       </section>
 
       {/* Stats Bar */}
-      <section className="bg-white py-16 border-b border-gray-100">
+      <section className="bg-paper py-14 border-b border-line">
         <div className="container-custom">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 divide-line lg:divide-x">
             {stats.map((stat, i) => (
-              <div key={i} className="group">
-                <div className="text-4xl md:text-5xl font-heading font-extrabold text-let-blue mb-2 group-hover:text-let-green transition-colors duration-300">
+              <div key={i} className="text-center lg:px-4">
+                <div className="text-4xl md:text-5xl font-heading text-ink mb-2">
                   <AnimatedCounter value={stat.value} prefix={stat.prefix || ''} suffix={stat.suffix || ''} />
                 </div>
-                <div className="text-gray-500 font-medium">{stat.label}</div>
+                <div className="text-xs font-semibold uppercase tracking-label text-ink-muted">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -254,14 +232,12 @@ export default function Home() {
       {/* Services Section */}
       <section className="section-padding bg-let-light">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center px-4 py-2 bg-let-blue/10 rounded-full mb-4">
-              <span className="text-let-blue font-semibold text-sm">What We Offer</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-let-blue mb-4">
-              Our Core Services
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">What We Offer</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">
+              Our core services
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-ink-soft leading-relaxed">
               Comprehensive solutions across investment, engineering, technology, and agriculture.
             </p>
           </div>
@@ -279,16 +255,14 @@ export default function Home() {
       </section>
 
       {/* Featured Projects */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center px-4 py-2 bg-let-green/10 rounded-full mb-4">
-              <span className="text-let-green font-semibold text-sm">Portfolio Highlights</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-let-blue mb-4">
-              Featured Projects
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">Portfolio Highlights</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">
+              Featured projects
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-ink-soft leading-relaxed">
               Explore our most impactful work delivering real results across diverse sectors.
             </p>
           </div>
@@ -308,12 +282,10 @@ export default function Home() {
       {/* AI Highlight */}
       <section className="section-padding bg-let-light">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center px-4 py-2 bg-let-blue/10 rounded-full mb-4">
-              <span className="text-let-blue font-semibold text-sm">Technology Edge</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-let-blue mb-4">
-              AI-Powered Innovation
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">Technology Edge</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink leading-tight">
+              AI-powered innovation
             </h2>
           </div>
           <AIHighlight
@@ -332,34 +304,32 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center px-4 py-2 bg-let-green/10 rounded-full mb-4">
-              <span className="text-let-green font-semibold text-sm">Client Stories</span>
-            </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-bold text-let-blue mb-4">
-              What Our Clients Say
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">Client Stories</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink leading-tight">
+              What our clients say
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((t, i) => (
               <div key={i} className="card flex flex-col">
-                <div className="flex mb-4">
+                <div className="flex gap-0.5 mb-5">
                   {[...Array(t.rating)].map((_, si) => (
-                    <svg key={si} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <svg key={si} className="w-4 h-4 text-clay" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-600 leading-relaxed flex-1 mb-6 italic">"{t.content}"</p>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-let-blue rounded-full flex items-center justify-center text-white font-bold mr-3">
+                <p className="font-heading text-lg text-ink leading-relaxed flex-1 mb-6">"{t.content}"</p>
+                <div className="flex items-center pt-5 border-t border-line">
+                  <div className="w-10 h-10 bg-ink rounded-full flex items-center justify-center text-paper font-heading mr-3">
                     {t.name[0]}
                   </div>
                   <div>
-                    <div className="font-semibold text-let-blue">{t.name}</div>
-                    <div className="text-sm text-gray-500">{t.role}</div>
+                    <div className="font-semibold text-ink">{t.name}</div>
+                    <div className="text-sm text-ink-muted">{t.role}</div>
                   </div>
                 </div>
               </div>
@@ -369,24 +339,27 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-let-blue via-let-accent to-let-green py-20">
-        <div className="container-custom text-center">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-6">
-            Ready to Invest in Your Future?
-          </h2>
-          <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Join over 500 clients who trust Let Investments to grow their wealth and deliver results that matter.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/get-started" className="bg-white text-let-blue hover:bg-let-light font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300 inline-flex items-center">
-              Start Investing Today
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Link>
-            <Link href="/contact" className="border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300 inline-flex items-center justify-center">
-              Talk to an Advisor
-            </Link>
+      <section className="bg-ink py-24">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-heading text-paper mb-6 leading-tight">
+              Ready to invest in your future?
+            </h2>
+            <p className="text-lg text-paper/70 mb-10 max-w-2xl mx-auto leading-relaxed">
+              Join over 500 clients who trust Let Investments to grow their wealth and deliver
+              results that matter.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/get-started" className="bg-paper text-ink hover:bg-bone font-medium px-7 py-3.5 rounded-md transition-colors inline-flex items-center justify-center">
+                Start investing today
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+              <Link href="/contact" className="border border-paper/30 text-paper hover:bg-paper/10 font-medium px-7 py-3.5 rounded-md transition-colors inline-flex items-center justify-center">
+                Talk to an advisor
+              </Link>
+            </div>
           </div>
         </div>
       </section>

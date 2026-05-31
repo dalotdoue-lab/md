@@ -8,65 +8,50 @@ const HeroSection = ({
   secondaryCtaText, 
   secondaryCtaLink,
   backgroundImage,
-  backgroundColor = 'bg-let-blue'
+  backgroundColor = 'bg-ink',
+  eyebrow,
 }) => {
   return (
     <section className={`relative ${backgroundColor} overflow-hidden`}>
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <defs>
-            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" strokeWidth="0.5"/>
-            </pattern>
-          </defs>
-          <rect width="100" height="100" fill="url(#grid)" />
-        </svg>
-      </div>
-      
       {/* Background Image Overlay */}
       {backgroundImage && (
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         >
-          <div className="absolute inset-0 bg-let-blue/80"></div>
+          <div className="absolute inset-0 bg-ink/80"></div>
         </div>
       )}
 
-      <div className="relative container-custom py-24 md:py-32 lg:py-40">
+      <div className="relative container-custom py-24 md:py-32">
         <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight">
+          {eyebrow && (
+            <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-label text-paper/60 mb-6">
+              <span className="inline-block w-7 h-px bg-clay"></span>
+              {eyebrow}
+            </div>
+          )}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-paper mb-6 leading-[1.08]">
             {title}
           </h1>
           {subtitle && (
-            <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-paper/70 mb-8 leading-relaxed max-w-2xl">
               {subtitle}
             </p>
           )}
           <div className="flex flex-col sm:flex-row gap-4">
             {ctaText && (
-              <Link href={ctaLink || '#'} className="btn-primary text-center">
+              <Link href={ctaLink || '#'} className="bg-paper text-ink px-6 py-3 rounded-md font-medium hover:bg-bone transition-colors text-center inline-flex items-center justify-center">
                 {ctaText}
               </Link>
             )}
             {secondaryCtaText && (
-              <Link href={secondaryCtaLink || '#'} className="btn-outline border-white text-white hover:bg-white hover:text-let-blue text-center">
+              <Link href={secondaryCtaLink || '#'} className="border border-paper/30 text-paper px-6 py-3 rounded-md font-medium hover:bg-paper/10 transition-colors text-center inline-flex items-center justify-center">
                 {secondaryCtaText}
               </Link>
             )}
           </div>
         </div>
-      </div>
-
-      {/* Wave Divider */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg className="w-full h-16 md:h-24" viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path 
-            fill="#FFFFFF" 
-            d="M0,64L80,69.3C160,75,320,85,480,80C640,75,800,53,960,48C1120,43,1280,53,1360,58.7L1440,64L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
-          ></path>
-        </svg>
       </div>
     </section>
   )

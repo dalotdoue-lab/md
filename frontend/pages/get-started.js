@@ -92,8 +92,8 @@ export default function GetStarted() {
 
   if (authLoading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin"></div>
+      <div className="min-h-screen bg-bone flex items-center justify-center">
+        <div className="w-10 h-10 border-2 border-olive border-t-transparent rounded-full animate-spin"></div>
       </div>
     )
   }
@@ -101,56 +101,54 @@ export default function GetStarted() {
   return (
     <>
       <Head>
-        <title>Get Started — Kingstone Investments</title>
-        <meta name="description" content="Access the secure onboarding gateway for Kingstone Investments." />
+        <title>Get Started — Let Investments</title>
+        <meta name="description" content="Create your account or sign in to access your Let Investments dashboard." />
       </Head>
 
-      <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col relative overflow-hidden font-sans">
-        {/* Glow Effects */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-
+      <div className="min-h-screen bg-bone text-ink-soft flex flex-col font-sans">
         {/* Header */}
-        <div className="p-6 relative z-10">
-          <Link href="/" className="flex items-center space-x-2 w-fit">
-            <div className="w-9 h-9 bg-emerald-500 rounded-lg flex items-center justify-center shadow-lg shadow-emerald-500/20">
-              <span className="text-slate-950 font-bold text-lg">K</span>
+        <div className="p-6">
+          <Link href="/" className="flex items-center gap-3 w-fit">
+            <div className="w-10 h-10 bg-ink rounded-md flex items-center justify-center">
+              <span className="text-paper font-heading text-xl leading-none">L</span>
             </div>
-            <div>
-              <span className="text-slate-100 font-bold text-lg block leading-none tracking-tight">Kingstone</span>
-              <span className="text-emerald-400 text-[10px] font-bold tracking-widest uppercase">INVESTMENTS</span>
+            <div className="leading-none">
+              <span className="text-ink font-heading text-xl block">Let</span>
+              <span className="text-ink-muted text-[0.65rem] font-semibold uppercase tracking-label">Investments</span>
             </div>
           </Link>
         </div>
 
         {/* Main Box */}
-        <div className="flex-1 flex items-center justify-center px-4 py-12 relative z-10">
+        <div className="flex-1 flex items-center justify-center px-4 py-12">
           <div className="w-full max-w-md">
-            
+
             {/* Card wrapper */}
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 shadow-2xl relative overflow-hidden">
-              
-              {/* Decorative line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-emerald-500 to-blue-500"></div>
+            <div className="bg-paper border border-line rounded-lg p-8 shadow-card">
 
               {/* Step Title */}
-              <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-100 to-slate-400">
-                  {mode === 'select' && 'Get Started'}
+              <div className="mb-8">
+                <div className="eyebrow mb-4">
+                  {mode === 'select' && 'Welcome'}
                   {mode === 'email-signin' && 'Sign In'}
-                  {mode === 'email-signup' && 'Create Account'}
+                  {mode === 'email-signup' && 'Register'}
+                </div>
+                <h1 className="text-3xl font-heading text-ink leading-tight">
+                  {mode === 'select' && 'Get started'}
+                  {mode === 'email-signin' && 'Sign in'}
+                  {mode === 'email-signup' && 'Create your account'}
                 </h1>
-                <p className="text-slate-400 text-sm mt-2">
-                  {mode === 'select' && 'Choose how you want to access your dashboard'}
-                  {mode === 'email-signin' && 'Enter email and password to log in'}
-                  {mode === 'email-signup' && 'Register a new account to begin investing'}
+                <p className="text-ink-soft text-sm mt-2 leading-relaxed">
+                  {mode === 'select' && 'Choose how you want to access your dashboard.'}
+                  {mode === 'email-signin' && 'Enter your email and password to log in.'}
+                  {mode === 'email-signup' && 'Register a new account to begin investing.'}
                 </p>
               </div>
 
               {/* Error Alert */}
               {error && (
-                <div className="bg-rose-950/50 border border-rose-800/60 text-rose-200 px-4 py-3 rounded-2xl mb-6 text-sm flex items-start gap-2.5 animate-fadeIn">
-                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="bg-clay/10 border border-clay/30 text-clay-deep px-4 py-3 rounded-md mb-6 text-sm flex items-start gap-2.5 animate-fadeIn">
+                  <svg className="w-5 h-5 flex-shrink-0 mt-0.5 text-clay" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <span>{error}</span>
@@ -163,7 +161,7 @@ export default function GetStarted() {
                   <button
                     onClick={handleGoogleSignIn}
                     disabled={loading}
-                    className="w-full flex items-center justify-center gap-3 bg-slate-100 text-slate-900 hover:bg-slate-200 transition duration-200 py-3.5 px-4 rounded-2xl font-semibold shadow-lg disabled:opacity-60"
+                    className="w-full flex items-center justify-center gap-3 bg-paper border border-line text-ink hover:bg-bone transition-colors duration-200 py-3 px-4 rounded-md font-medium disabled:opacity-60"
                   >
                     <svg className="w-5 h-5" viewBox="0 0 24 24">
                       <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -176,60 +174,60 @@ export default function GetStarted() {
 
                   {/* Divider */}
                   <div className="flex items-center gap-4 my-6">
-                    <div className="flex-1 h-[1px] bg-slate-800"></div>
-                    <span className="text-slate-500 text-xs font-semibold uppercase tracking-wider">or</span>
-                    <div className="flex-1 h-[1px] bg-slate-800"></div>
+                    <div className="flex-1 h-px bg-line"></div>
+                    <span className="text-ink-muted text-xs font-semibold uppercase tracking-label">or</span>
+                    <div className="flex-1 h-px bg-line"></div>
                   </div>
 
                   {/* Continue with Email Button */}
                   <button
                     onClick={() => setMode('email-signin')}
-                    className="w-full flex items-center justify-center gap-3 bg-slate-800/80 border border-slate-700/60 text-slate-100 hover:bg-slate-800 transition duration-200 py-3.5 px-4 rounded-2xl font-semibold shadow-inner"
+                    className="w-full flex items-center justify-center gap-3 bg-ink text-paper hover:bg-olive-deep transition-colors duration-200 py-3 px-4 rounded-md font-medium"
                   >
-                    <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-5 h-5 text-paper/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
-                    Continue with Email
+                    Continue with email
                   </button>
 
-                  <p className="text-center text-xs text-slate-500 mt-6 leading-relaxed">
-                    By onboarding, you agree to our{' '}
-                    <a href="#" className="text-emerald-400 hover:underline">Terms of Service</a> and{' '}
-                    <a href="#" className="text-emerald-400 hover:underline">Privacy Policy</a>.
+                  <p className="text-center text-xs text-ink-muted mt-6 leading-relaxed">
+                    By continuing, you agree to our{' '}
+                    <Link href="/terms" className="text-olive-deep hover:underline">Terms of Service</Link> and{' '}
+                    <Link href="/privacy" className="text-olive-deep hover:underline">Privacy Policy</Link>.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleEmailSubmit} className="space-y-4">
                   {mode === 'email-signup' && (
                     <div>
-                      <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
+                      <label className="block text-xs font-semibold text-ink uppercase tracking-label mb-2">Full Name</label>
                       <input
                         type="text"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full bg-slate-950 border border-slate-800 rounded-2xl py-3 px-4 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition duration-200 text-sm"
+                        className="input-field text-sm"
                         placeholder="John Doe"
                       />
                     </div>
                   )}
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Email Address</label>
+                    <label className="block text-xs font-semibold text-ink uppercase tracking-label mb-2">Email Address</label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full bg-slate-950 border border-slate-800 rounded-2xl py-3 px-4 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition duration-200 text-sm"
+                      className="input-field text-sm"
                       placeholder="john@example.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Password</label>
+                    <label className="block text-xs font-semibold text-ink uppercase tracking-label mb-2">Password</label>
                     <div className="relative">
                       <input
                         type={showPassword ? 'text' : 'password'}
@@ -237,13 +235,13 @@ export default function GetStarted() {
                         value={formData.password}
                         onChange={handleChange}
                         required
-                        className="w-full bg-slate-950 border border-slate-800 rounded-2xl py-3 px-4 pr-12 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition duration-200 text-sm"
+                        className="input-field text-sm pr-12"
                         placeholder="••••••••"
                       />
                       <button
                         type="button"
                         onClick={() => setShowPassword(!showPassword)}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 text-ink-muted hover:text-ink transition-colors"
                       >
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           {showPassword ? (
@@ -258,14 +256,14 @@ export default function GetStarted() {
 
                   {mode === 'email-signup' && (
                     <div>
-                      <label className="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Confirm Password</label>
+                      <label className="block text-xs font-semibold text-ink uppercase tracking-label mb-2">Confirm Password</label>
                       <input
                         type={showPassword ? 'text' : 'password'}
                         name="confirmPassword"
                         value={formData.confirmPassword}
                         onChange={handleChange}
                         required
-                        className="w-full bg-slate-950 border border-slate-800 rounded-2xl py-3 px-4 text-slate-100 placeholder-slate-600 focus:outline-none focus:border-emerald-500 transition duration-200 text-sm"
+                        className="input-field text-sm"
                         placeholder="••••••••"
                       />
                     </div>
@@ -274,35 +272,35 @@ export default function GetStarted() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full bg-emerald-500 text-slate-950 font-bold py-3.5 px-4 rounded-2xl hover:bg-emerald-400 transition duration-200 shadow-lg shadow-emerald-500/20 disabled:opacity-60 flex items-center justify-center gap-2 mt-2"
+                    className="btn-primary w-full disabled:opacity-60 mt-2"
                   >
                     {loading ? (
-                      <div className="w-5 h-5 border-2 border-slate-950 border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-5 h-5 border-2 border-paper border-t-transparent rounded-full animate-spin"></div>
                     ) : mode === 'email-signin' ? (
-                      'Sign In'
+                      'Sign in'
                     ) : (
-                      'Create Account'
+                      'Create account'
                     )}
                   </button>
 
                   {/* Toggle Mode / Back */}
-                  <div className="flex flex-col items-center justify-center gap-2 pt-2 text-sm text-slate-400">
+                  <div className="flex flex-col items-center justify-center gap-2 pt-2 text-sm text-ink-soft">
                     {mode === 'email-signin' ? (
                       <p>
                         Don't have an account?{' '}
-                        <button type="button" onClick={() => { setMode('email-signup'); setError('') }} className="text-emerald-400 font-semibold hover:underline">
+                        <button type="button" onClick={() => { setMode('email-signup'); setError('') }} className="text-olive-deep font-semibold hover:underline">
                           Sign up
                         </button>
                       </p>
                     ) : (
                       <p>
                         Already have an account?{' '}
-                        <button type="button" onClick={() => { setMode('email-signin'); setError('') }} className="text-emerald-400 font-semibold hover:underline">
+                        <button type="button" onClick={() => { setMode('email-signin'); setError('') }} className="text-olive-deep font-semibold hover:underline">
                           Log in
                         </button>
                       </p>
                     )}
-                    <button type="button" onClick={() => { setMode('select'); setError('') }} className="text-xs text-slate-500 hover:text-slate-300 font-medium tracking-wide flex items-center gap-1 mt-1">
+                    <button type="button" onClick={() => { setMode('select'); setError('') }} className="text-xs text-ink-muted hover:text-ink font-medium tracking-wide flex items-center gap-1 mt-1">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                       </svg>

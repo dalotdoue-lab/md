@@ -68,16 +68,16 @@ export default function Login() {
   const isSubmitting = emailLoading || googleLoading
 
   return (
-    <div className="min-h-screen bg-let-light flex flex-col">
+    <div className="min-h-screen bg-bone flex flex-col">
       {/* Header */}
       <div className="p-6">
-        <Link href="/" className="flex items-center space-x-2 w-fit">
-          <div className="w-9 h-9 bg-let-blue rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">L</span>
+        <Link href="/" className="flex items-center gap-3 w-fit">
+          <div className="w-10 h-10 bg-ink rounded-md flex items-center justify-center">
+            <span className="text-paper font-heading text-xl leading-none">L</span>
           </div>
-          <div>
-            <span className="text-let-blue font-bold text-lg block leading-none">Let</span>
-            <span className="text-let-green text-xs font-semibold tracking-widest">INVESTMENTS</span>
+          <div className="leading-none">
+            <span className="text-ink font-heading text-xl block">Let</span>
+            <span className="text-ink-muted text-[0.65rem] font-semibold uppercase tracking-label">Investments</span>
           </div>
         </Link>
       </div>
@@ -86,19 +86,15 @@ export default function Login() {
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="w-full max-w-md">
           <div className="card">
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-let-blue/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-let-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </div>
-              <h1 className="text-3xl font-heading font-bold text-let-blue">Welcome Back</h1>
-              <p className="text-gray-500 mt-2">Sign in to your account to continue</p>
+            <div className="mb-8">
+              <div className="eyebrow mb-4">Welcome Back</div>
+              <h1 className="text-3xl font-heading text-ink leading-tight">Sign in</h1>
+              <p className="text-ink-soft mt-2">Sign in to your account to continue.</p>
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6 text-sm flex items-start gap-2">
-                <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-clay/10 border border-clay/30 text-clay-deep px-4 py-3 rounded-md mb-6 text-sm flex items-start gap-2">
+                <svg className="w-5 h-5 flex-shrink-0 mt-0.5 text-clay" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 {error}
@@ -134,7 +130,7 @@ export default function Login() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-ink-muted hover:text-ink"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       {showPassword ? (
@@ -154,18 +150,18 @@ export default function Login() {
               >
                 {emailLoading ? (
                   <span className="flex items-center justify-center gap-2">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Signing In...
+                    <div className="w-4 h-4 border-2 border-paper border-t-transparent rounded-full animate-spin"></div>
+                    Signing in...
                   </span>
-                ) : 'Sign In'}
+                ) : 'Sign in'}
               </button>
             </form>
 
             {/* Divider */}
             <div className="flex items-center gap-3 my-6">
-              <div className="flex-1 h-px bg-gray-200"></div>
-              <span className="text-gray-400 text-sm">or</span>
-              <div className="flex-1 h-px bg-gray-200"></div>
+              <div className="flex-1 h-px bg-line"></div>
+              <span className="text-ink-muted text-xs font-semibold uppercase tracking-label">or</span>
+              <div className="flex-1 h-px bg-line"></div>
             </div>
 
             {/* Google Sign-in */}
@@ -173,11 +169,11 @@ export default function Login() {
               type="button"
               onClick={handleGoogleSignIn}
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-3 border-2 border-gray-200 rounded-lg py-3 text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 font-medium disabled:opacity-60 disabled:cursor-not-allowed bg-white"
+              className="w-full flex items-center justify-center gap-3 border border-line rounded-md py-3 text-ink hover:bg-bone transition-colors duration-200 font-medium disabled:opacity-60 disabled:cursor-not-allowed bg-paper"
             >
               {googleLoading ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-let-blue border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 border-2 border-olive border-t-transparent rounded-full animate-spin"></div>
                   Opening Google...
                 </>
               ) : (
@@ -193,9 +189,9 @@ export default function Login() {
               )}
             </button>
 
-            <p className="text-center mt-6 text-gray-600 text-sm">
+            <p className="text-center mt-6 text-ink-soft text-sm">
               Don&apos;t have an account?{' '}
-              <Link href="/get-started" className="text-let-blue font-semibold hover:underline">
+              <Link href="/get-started" className="text-olive-deep font-semibold hover:underline">
                 Create one now
               </Link>
             </p>

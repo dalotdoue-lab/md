@@ -15,8 +15,8 @@ function PasswordStrength({ password }) {
 
   const strength = getStrength()
   const labels = ['', 'Weak', 'Fair', 'Good', 'Strong']
-  const colors = ['', 'bg-red-500', 'bg-yellow-500', 'bg-blue-500', 'bg-green-500']
-  const textColors = ['', 'text-red-500', 'text-yellow-500', 'text-blue-500', 'text-green-500']
+  const colors = ['', 'bg-clay', 'bg-clay', 'bg-olive', 'bg-olive-deep']
+  const textColors = ['', 'text-clay-deep', 'text-clay-deep', 'text-olive-deep', 'text-olive-deep']
 
   if (!password) return null
 
@@ -26,8 +26,8 @@ function PasswordStrength({ password }) {
         {[1, 2, 3, 4].map((i) => (
           <div
             key={i}
-            className={`h-1.5 flex-1 rounded-full transition-colors duration-300 ${
-              i <= strength ? colors[strength] : 'bg-gray-200'
+            className={`h-1 flex-1 rounded-full transition-colors duration-300 ${
+              i <= strength ? colors[strength] : 'bg-line'
             }`}
           />
         ))}
@@ -110,16 +110,16 @@ export default function Register() {
   const isSubmitting = emailLoading || googleLoading
 
   return (
-    <div className="min-h-screen bg-let-light flex flex-col">
+    <div className="min-h-screen bg-bone flex flex-col">
       {/* Header */}
       <div className="p-6">
-        <Link href="/" className="flex items-center space-x-2 w-fit">
-          <div className="w-9 h-9 bg-let-blue rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">L</span>
+        <Link href="/" className="flex items-center gap-3 w-fit">
+          <div className="w-10 h-10 bg-ink rounded-md flex items-center justify-center">
+            <span className="text-paper font-heading text-xl leading-none">L</span>
           </div>
-          <div>
-            <span className="text-let-blue font-bold text-lg block leading-none">Let</span>
-            <span className="text-let-green text-xs font-semibold tracking-widest">INVESTMENTS</span>
+          <div className="leading-none">
+            <span className="text-ink font-heading text-xl block">Let</span>
+            <span className="text-ink-muted text-[0.65rem] font-semibold uppercase tracking-label">Investments</span>
           </div>
         </Link>
       </div>
@@ -128,19 +128,15 @@ export default function Register() {
       <div className="flex-1 flex items-center justify-center px-4 py-8">
         <div className="w-full max-w-md">
           <div className="card">
-            <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-let-green/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-let-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-                </svg>
-              </div>
-              <h1 className="text-3xl font-heading font-bold text-let-blue">Create Account</h1>
-              <p className="text-gray-500 mt-2">Join 500+ investors growing their wealth</p>
+            <div className="mb-8">
+              <div className="eyebrow mb-4">Get Started</div>
+              <h1 className="text-3xl font-heading text-ink leading-tight">Create your account</h1>
+              <p className="text-ink-soft mt-2">Join 500+ investors growing their wealth.</p>
             </div>
 
             {error && (
-              <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6 text-sm flex items-start gap-2">
-                <svg className="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="bg-clay/10 border border-clay/30 text-clay-deep px-4 py-3 rounded-md mb-6 text-sm flex items-start gap-2">
+                <svg className="w-5 h-5 flex-shrink-0 mt-0.5 text-clay" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 {error}
@@ -192,7 +188,7 @@ export default function Register() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-ink-muted hover:text-ink"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -215,15 +211,15 @@ export default function Register() {
                   autoComplete="new-password"
                 />
                 {formData.confirmPassword && formData.password !== formData.confirmPassword && (
-                  <p className="text-red-500 text-xs mt-1">Passwords do not match</p>
+                  <p className="text-clay-deep text-xs mt-1">Passwords do not match</p>
                 )}
               </div>
 
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-ink-muted leading-relaxed">
                 By creating an account, you agree to our{' '}
-                <Link href="/terms" className="text-let-blue hover:underline">Terms of Service</Link>
+                <Link href="/terms" className="text-olive-deep hover:underline">Terms of Service</Link>
                 {' '}and{' '}
-                <Link href="/privacy" className="text-let-blue hover:underline">Privacy Policy</Link>.
+                <Link href="/privacy" className="text-olive-deep hover:underline">Privacy Policy</Link>.
               </p>
 
               <button
@@ -233,18 +229,18 @@ export default function Register() {
               >
                 {emailLoading ? (
                   <span className="flex items-center justify-center gap-2">
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Creating Account...
+                    <div className="w-4 h-4 border-2 border-paper border-t-transparent rounded-full animate-spin"></div>
+                    Creating account...
                   </span>
-                ) : 'Create Account'}
+                ) : 'Create account'}
               </button>
             </form>
 
             {/* Divider */}
             <div className="flex items-center gap-3 my-6">
-              <div className="flex-1 h-px bg-gray-200"></div>
-              <span className="text-gray-400 text-sm">or</span>
-              <div className="flex-1 h-px bg-gray-200"></div>
+              <div className="flex-1 h-px bg-line"></div>
+              <span className="text-ink-muted text-xs font-semibold uppercase tracking-label">or</span>
+              <div className="flex-1 h-px bg-line"></div>
             </div>
 
             {/* Google Sign-up */}
@@ -252,11 +248,11 @@ export default function Register() {
               type="button"
               onClick={handleGoogleSignIn}
               disabled={isSubmitting}
-              className="w-full flex items-center justify-center gap-3 border-2 border-gray-200 rounded-lg py-3 text-gray-700 hover:bg-gray-50 hover:border-gray-300 transition-all duration-200 font-medium disabled:opacity-60 disabled:cursor-not-allowed bg-white"
+              className="w-full flex items-center justify-center gap-3 border border-line rounded-md py-3 text-ink hover:bg-bone transition-colors duration-200 font-medium disabled:opacity-60 disabled:cursor-not-allowed bg-paper"
             >
               {googleLoading ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-let-blue border-t-transparent rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 border-2 border-olive border-t-transparent rounded-full animate-spin"></div>
                   Opening Google...
                 </>
               ) : (
@@ -272,9 +268,9 @@ export default function Register() {
               )}
             </button>
 
-            <p className="text-center mt-6 text-gray-600 text-sm">
+            <p className="text-center mt-6 text-ink-soft text-sm">
               Already have an account?{' '}
-              <Link href="/login" className="text-let-blue font-semibold hover:underline">
+              <Link href="/login" className="text-olive-deep font-semibold hover:underline">
                 Sign in
               </Link>
             </p>

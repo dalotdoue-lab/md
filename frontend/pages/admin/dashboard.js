@@ -13,15 +13,15 @@ function fmt(n) { return `$${Number(n || 0).toLocaleString(undefined, { minimumF
 
 function Badge({ children, color = 'blue' }) {
   const colors = {
-    blue: 'bg-blue-100 text-blue-800 border border-blue-200',
-    green: 'bg-emerald-100 text-emerald-800 border border-emerald-200',
-    yellow: 'bg-amber-100 text-amber-800 border border-amber-200',
-    red: 'bg-rose-100 text-rose-800 border border-rose-200',
-    gray: 'bg-gray-100 text-gray-700 border border-gray-200',
-    purple: 'bg-purple-100 text-purple-700 border border-purple-200',
+    blue: 'bg-ink/5 text-ink border border-line',
+    green: 'bg-olive/15 text-olive-deep border border-olive/20',
+    yellow: 'bg-clay/15 text-clay-deep border border-clay/20',
+    red: 'bg-clay-deep/15 text-clay-deep border border-clay-deep/20',
+    gray: 'bg-ink/5 text-ink-soft border border-line',
+    purple: 'bg-ink/10 text-ink border border-line',
   }
   return (
-    <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${colors[color] || colors.blue}`}>
+    <span className={`px-2.5 py-0.5 rounded text-xs font-semibold uppercase tracking-wide ${colors[color] || colors.blue}`}>
       {children}
     </span>
   )
@@ -29,18 +29,18 @@ function Badge({ children, color = 'blue' }) {
 
 function StatCard({ label, value, icon, color = 'blue' }) {
   const borderColors = {
-    blue: 'border-l-4 border-l-blue-600',
-    green: 'border-l-4 border-l-emerald-600',
-    yellow: 'border-l-4 border-l-amber-600',
-    purple: 'border-l-4 border-l-purple-600',
+    blue: 'border-l-2 border-l-ink',
+    green: 'border-l-2 border-l-olive',
+    yellow: 'border-l-2 border-l-clay',
+    purple: 'border-l-2 border-l-ink-soft',
   }
   return (
-    <div className={`bg-white rounded-2xl shadow-sm border border-gray-150 p-6 flex items-center justify-between transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 ${borderColors[color]}`}>
+    <div className={`bg-paper rounded-lg shadow-card border border-line p-6 flex items-center justify-between transition-all duration-300 hover:shadow-lift hover:-translate-y-0.5 ${borderColors[color]}`}>
       <div>
-        <p className="text-sm font-medium text-gray-500">{label}</p>
-        <p className="text-3xl font-bold text-gray-900 mt-1">{value}</p>
+        <p className="text-xs font-semibold text-ink-muted uppercase tracking-label">{label}</p>
+        <p className="text-3xl font-heading text-ink mt-2">{value}</p>
       </div>
-      <div className="p-3 bg-gray-50 rounded-xl text-gray-400">
+      <div className="text-clay">
         {icon}
       </div>
     </div>
@@ -49,17 +49,17 @@ function StatCard({ label, value, icon, color = 'blue' }) {
 
 function AdminFlowCard({ title, value, label, color = 'blue' }) {
   const colors = {
-    blue: 'bg-blue-50 text-blue-700 border-blue-100',
-    green: 'bg-emerald-50 text-emerald-700 border-emerald-100',
-    yellow: 'bg-amber-50 text-amber-700 border-amber-100',
-    slate: 'bg-slate-50 text-slate-700 border-slate-100',
+    blue: 'bg-bone text-ink border-line',
+    green: 'bg-olive/10 text-olive-deep border-olive/20',
+    yellow: 'bg-clay/10 text-clay-deep border-clay/20',
+    slate: 'bg-bone text-ink-soft border-line',
   }
 
   return (
-    <div className={`rounded-xl border p-4 ${colors[color] || colors.blue}`}>
-      <p className="text-xs font-black uppercase tracking-wider opacity-75">{label}</p>
-      <p className="mt-2 text-3xl font-black">{value}</p>
-      <p className="mt-2 text-sm font-bold">{title}</p>
+    <div className={`rounded-md border p-4 ${colors[color] || colors.blue}`}>
+      <p className="text-xs font-semibold uppercase tracking-label opacity-75">{label}</p>
+      <p className="mt-2 text-3xl font-heading">{value}</p>
+      <p className="mt-2 text-sm font-semibold">{title}</p>
     </div>
   )
 }
@@ -73,13 +73,13 @@ function AdminOperationsOverview({ pendingCount, approvedVolume, clientsCount, p
   ]
 
   return (
-    <section className="rounded-2xl border border-gray-150 bg-white p-6 shadow-sm">
+    <section className="rounded-lg border border-line bg-paper p-6 shadow-card">
       <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
         <div className="max-w-2xl">
-          <p className="text-xs font-black uppercase tracking-wider text-emerald-700">Admin command center</p>
-          <h1 className="mt-2 text-3xl font-black text-[#0D3B66]">Investment operations dashboard</h1>
-          <p className="mt-3 text-sm leading-relaxed text-gray-500">
-            Manage client capital, payment approvals, investment projects, and client-facing instructions from one structured operating view.
+          <div className="eyebrow mb-4">Admin Command Center</div>
+          <h1 className="mt-2 text-3xl font-heading text-ink leading-tight">Investment operations dashboard</h1>
+          <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+            Manage client capital, payment approvals, investment projects, and client-facing instructions from one operating view.
           </p>
         </div>
         <div className="grid w-full grid-cols-2 gap-3 lg:max-w-xl">
@@ -92,10 +92,10 @@ function AdminOperationsOverview({ pendingCount, approvedVolume, clientsCount, p
 
       <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-4">
         {flow.map((step, index) => (
-          <div key={step.title} className="rounded-xl bg-gray-50 p-4">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0D3B66] text-xs font-black text-white">{index + 1}</div>
-            <p className="mt-3 text-sm font-black text-gray-900">{step.title}</p>
-            <p className="mt-2 text-xs leading-relaxed text-gray-500">{step.text}</p>
+          <div key={step.title} className="rounded-md bg-bone p-4">
+            <div className="flex h-8 w-8 items-center justify-center rounded-md bg-ink text-xs font-heading text-paper">{index + 1}</div>
+            <p className="mt-3 text-sm font-heading text-ink">{step.title}</p>
+            <p className="mt-2 text-xs leading-relaxed text-ink-soft">{step.text}</p>
           </div>
         ))}
       </div>
@@ -331,8 +331,8 @@ export default function AdminDashboard() {
 
   if (authLoading || (!user && !authLoading)) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gray-50">
-        <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+      <div className="flex items-center justify-center min-h-screen bg-bone">
+        <div className="w-10 h-10 border-2 border-olive border-t-transparent rounded-full animate-spin" />
       </div>
     )
   }
@@ -343,29 +343,29 @@ export default function AdminDashboard() {
   return (
     <>
       <Head><title>Admin Panel — Let Investments</title></Head>
-      <div className="min-h-screen bg-gray-50 text-gray-850">
+      <div className="min-h-screen bg-bone text-ink-soft">
         
         {/* Navigation Top bar */}
-        <div className="sticky top-0 z-40 border-b border-white/10 bg-[#102033] px-4 py-3 text-white shadow-md">
+        <div className="sticky top-0 z-40 border-b border-paper/10 bg-ink px-4 py-3 text-paper">
           <div className="mx-auto flex max-w-7xl flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-300 text-lg font-black text-[#102033]">L</div>
+            <div className="flex h-10 w-10 items-center justify-center rounded-md bg-paper text-lg font-heading text-ink">L</div>
             <div>
-              <p className="font-semibold leading-none">Let Investments</p>
-              <p className="mt-0.5 text-xs text-blue-200">Investment Admin Portal</p>
+              <p className="font-heading leading-none">Let Investments</p>
+              <p className="mt-0.5 text-[0.65rem] font-semibold uppercase tracking-label text-paper/50">Admin Portal</p>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-2 text-xs font-bold">
-            <a href="#admin-overview" className="rounded-lg bg-white/10 px-3 py-2 text-blue-50 hover:bg-white/15">Overview</a>
-            <a href="#projects" className="rounded-lg px-3 py-2 text-blue-100 hover:bg-white/10">Projects</a>
-            <a href="#approvals" className="rounded-lg px-3 py-2 text-blue-100 hover:bg-white/10">Approvals</a>
-            <a href="#clients" className="rounded-lg px-3 py-2 text-blue-100 hover:bg-white/10">Clients</a>
-            <a href="#settings" className="rounded-lg px-3 py-2 text-blue-100 hover:bg-white/10">Settings</a>
+          <div className="flex flex-wrap items-center gap-1 text-xs font-medium">
+            <a href="#admin-overview" className="rounded-md bg-paper/10 px-3 py-2 text-paper hover:bg-paper/15">Overview</a>
+            <a href="#projects" className="rounded-md px-3 py-2 text-paper/70 hover:bg-paper/10 hover:text-paper">Projects</a>
+            <a href="#approvals" className="rounded-md px-3 py-2 text-paper/70 hover:bg-paper/10 hover:text-paper">Approvals</a>
+            <a href="#clients" className="rounded-md px-3 py-2 text-paper/70 hover:bg-paper/10 hover:text-paper">Clients</a>
+            <a href="#settings" className="rounded-md px-3 py-2 text-paper/70 hover:bg-paper/10 hover:text-paper">Settings</a>
           </div>
           <div className="flex items-center gap-3">
-            <span className="hidden text-sm text-blue-100 md:block">{user?.email}</span>
-            <button onClick={signOut} className="rounded-lg bg-white/10 px-4 py-2 text-sm font-medium transition hover:bg-white/20">
-              Sign Out
+            <span className="hidden text-sm text-paper/70 md:block">{user?.email}</span>
+            <button onClick={signOut} className="rounded-md bg-paper/10 px-4 py-2 text-sm font-medium transition hover:bg-paper/20">
+              Sign out
             </button>
           </div>
           </div>
@@ -408,14 +408,14 @@ export default function AdminDashboard() {
           </div>
 
           {/* 1. PROJECTS MANAGEMENT SECTION (At the top) */}
-          <section id="projects" className="bg-white rounded-2xl shadow-sm border border-gray-150 p-6 space-y-6">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-4">
+          <section id="projects" className="bg-paper rounded-lg shadow-card border border-line p-6 space-y-6">
+            <div className="flex items-center justify-between border-b border-line pb-4">
               <div>
-                <h2 className="text-2xl font-bold text-[#0D3B66]">Projects Management</h2>
-                <p className="text-sm text-gray-500 mt-1">Add, update, or remove investment options</p>
+                <h2 className="text-2xl font-heading text-ink">Projects Management</h2>
+                <p className="text-sm text-ink-soft mt-1">Add, update, or remove investment options</p>
               </div>
               {!showProjForm && (
-                <button onClick={startNewProj} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl flex items-center gap-2 transition">
+                <button onClick={startNewProj} className="bg-ink hover:bg-olive-deep text-paper font-semibold text-sm px-5 py-2.5 rounded-md flex items-center gap-2 transition">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
                   Add Project
                 </button>
@@ -424,85 +424,85 @@ export default function AdminDashboard() {
 
             {/* Project Edit / Create Form */}
             {showProjForm && (
-              <form onSubmit={saveProject} className="bg-gray-50 border border-gray-200 rounded-2xl p-6 space-y-4">
-                <h3 className="font-bold text-lg text-[#0D3B66]">{editingProjId ? 'Edit Project Details' : 'Create New Investment Project'}</h3>
+              <form onSubmit={saveProject} className="bg-bone border border-line rounded-md p-6 space-y-4">
+                <h3 className="font-heading text-lg text-ink">{editingProjId ? 'Edit Project Details' : 'Create New Investment Project'}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="md:col-span-2">
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Project Title</label>
-                    <input name="title" value={projForm.title} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" placeholder="e.g. Rice Husks Biomass Energy, Kisumu" required />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Project Title</label>
+                    <input name="title" value={projForm.title} onChange={handleProjChange} className="input-field text-sm" placeholder="e.g. Rice Husks Biomass Energy, Kisumu" required />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Category</label>
-                    <select name="category" value={projForm.category} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Category</label>
+                    <select name="category" value={projForm.category} onChange={handleProjChange} className="input-field text-sm">
                       {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Status</label>
-                    <select name="status" value={projForm.status} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Status</label>
+                    <select name="status" value={projForm.status} onChange={handleProjChange} className="input-field text-sm">
                       {PROJECT_STATUSES.map(s => <option key={s} value={s}>{s.replace('_', ' ')}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Client Name (Optional)</label>
-                    <input name="client" value={projForm.client} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" placeholder="e.g. East Africa AgriCo" />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Client Name (Optional)</label>
+                    <input name="client" value={projForm.client} onChange={handleProjChange} className="input-field text-sm" placeholder="e.g. East Africa AgriCo" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Location</label>
-                    <input name="location" value={projForm.location} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" placeholder="e.g. Kisumu, Kenya" />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Location</label>
+                    <input name="location" value={projForm.location} onChange={handleProjChange} className="input-field text-sm" placeholder="e.g. Kisumu, Kenya" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Target Budget / Valuation ($)</label>
-                    <input type="number" name="price" value={projForm.price} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" min="0" step="0.01" />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Target Budget / Valuation ($)</label>
+                    <input type="number" name="price" value={projForm.price} onChange={handleProjChange} className="input-field text-sm" min="0" step="0.01" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Funding Progress (%)</label>
-                    <input type="number" name="progress" value={projForm.progress} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" min="0" max="100" />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Funding Progress (%)</label>
+                    <input type="number" name="progress" value={projForm.progress} onChange={handleProjChange} className="input-field text-sm" min="0" max="100" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Daily ROI / Earnings per Client ($)</label>
-                    <input type="number" name="dailyEarnings" value={projForm.dailyEarnings} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" min="0" step="0.01" placeholder="Daily earnings paid to client" />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Daily ROI / Earnings per Client ($)</label>
+                    <input type="number" name="dailyEarnings" value={projForm.dailyEarnings} onChange={handleProjChange} className="input-field text-sm" min="0" step="0.01" placeholder="Daily earnings paid to client" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Minimum Investment ($)</label>
-                    <input type="number" name="minInvestment" value={projForm.minInvestment} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" min="0" step="0.01" placeholder="Minimum allowed investment" />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Minimum Investment ($)</label>
+                    <input type="number" name="minInvestment" value={projForm.minInvestment} onChange={handleProjChange} className="input-field text-sm" min="0" step="0.01" placeholder="Minimum allowed investment" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Display Order (Sorting)</label>
-                    <input type="number" name="order" value={projForm.order} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Display Order (Sorting)</label>
+                    <input type="number" name="order" value={projForm.order} onChange={handleProjChange} className="input-field text-sm" />
                   </div>
                   <div className="md:col-span-2">
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">External Link / Slug</label>
-                    <input name="link" value={projForm.link} onChange={handleProjChange} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" placeholder="/projects/kisumu-biomass" />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">External Link / Slug</label>
+                    <input name="link" value={projForm.link} onChange={handleProjChange} className="input-field text-sm" placeholder="/projects/kisumu-biomass" />
                   </div>
                   <div className="md:col-span-2">
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Short Card Description</label>
-                    <textarea name="description" value={projForm.description} onChange={handleProjChange} rows={2} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 resize-none" placeholder="Brief summary for catalog listing..." />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Short Card Description</label>
+                    <textarea name="description" value={projForm.description} onChange={handleProjChange} rows={2} className="input-field text-sm resize-none" placeholder="Brief summary for catalog listing..." />
                   </div>
                   <div className="md:col-span-2">
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Detailed Write-Up (ROI terms, risk factors, etc.)</label>
-                    <textarea name="details" value={projForm.details} onChange={handleProjChange} rows={4} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500 resize-none" placeholder="Provide details about daily payouts, project timeline, and structure..." />
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Detailed Write-Up (ROI terms, risk factors, etc.)</label>
+                    <textarea name="details" value={projForm.details} onChange={handleProjChange} rows={4} className="input-field text-sm resize-none" placeholder="Provide details about daily payouts, project timeline, and structure..." />
                   </div>
                   <div className="md:col-span-2">
-                    <label className="block text-xs font-semibold text-gray-600 mb-1">Project Banner Image</label>
+                    <label className="block text-xs font-semibold text-ink-soft mb-1">Project Banner Image</label>
                     <div className="flex items-center gap-4 flex-wrap mt-1">
-                      <label className="cursor-pointer bg-white border border-gray-300 hover:bg-gray-50 rounded-xl px-4 py-2.5 text-sm font-semibold text-blue-600 transition">
+                      <label className="cursor-pointer bg-paper border border-line hover:bg-bone rounded-md px-4 py-2.5 text-sm font-semibold text-ink transition">
                         {projUpload.uploading ? `Uploading (${projUpload.progress}%)` : 'Upload Banner'}
                         <input type="file" accept="image/*" className="hidden" onChange={e => handleProjImageFile(e.target.files[0])} disabled={projUpload.uploading} />
                       </label>
-                      {projForm.image && <img src={projForm.image} alt="Preview" className="w-20 h-16 rounded-lg object-cover border border-gray-200" />}
+                      {projForm.image && <img src={projForm.image} alt="Preview" className="w-20 h-16 rounded-md object-cover border border-line" />}
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <input type="checkbox" id="featured" name="featured" checked={!!projForm.featured} onChange={handleProjChange} className="w-4 h-4 accent-blue-600" />
-                    <label htmlFor="featured" className="text-sm font-medium text-gray-700">Feature this project on home catalog</label>
+                    <input type="checkbox" id="featured" name="featured" checked={!!projForm.featured} onChange={handleProjChange} className="w-4 h-4 accent-olive" />
+                    <label htmlFor="featured" className="text-sm font-medium text-ink-soft">Feature this project on home catalog</label>
                   </div>
                 </div>
                 <div className="flex gap-3 pt-2">
-                  <button type="submit" disabled={savingProj || projUpload.uploading} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-6 py-2.5 rounded-xl disabled:opacity-60 transition">
+                  <button type="submit" disabled={savingProj || projUpload.uploading} className="bg-ink hover:bg-olive-deep text-paper font-semibold text-sm px-6 py-2.5 rounded-md disabled:opacity-60 transition">
                     {savingProj ? 'Saving...' : editingProjId ? 'Update Project' : 'Add Project'}
                   </button>
-                  <button type="button" onClick={() => { setShowProjForm(false); setEditingProjId(null) }} className="px-6 py-2.5 text-sm rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100 transition">
+                  <button type="button" onClick={() => { setShowProjForm(false); setEditingProjId(null) }} className="px-6 py-2.5 text-sm rounded-md border border-line text-ink-soft hover:bg-bone transition">
                     Cancel
                   </button>
                 </div>
@@ -511,39 +511,39 @@ export default function AdminDashboard() {
 
             {/* Projects Table */}
             {loadingData ? (
-              <div className="text-center py-6 text-gray-400">Loading...</div>
+              <div className="text-center py-6 text-ink-muted">Loading...</div>
             ) : projects.length === 0 ? (
-              <div className="text-center py-10 text-gray-400 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+              <div className="text-center py-10 text-ink-muted bg-bone rounded-lg border border-dashed border-line">
                 No active projects. Click "Add Project" to create one.
               </div>
             ) : (
-              <div className="overflow-x-auto border border-gray-150 rounded-xl">
+              <div className="overflow-x-auto border border-line rounded-md">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-gray-50 border-b border-gray-100">
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Banner</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Project Title</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Category</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Daily Profit Payout</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Min Invest</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Status</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase"></th>
+                    <tr className="bg-bone border-b border-line">
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Banner</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Project Title</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Category</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Daily Profit Payout</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Min Invest</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Status</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label"></th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
+                  <tbody className="divide-y divide-line">
                     {projects.map(p => (
-                      <tr key={p.id} className="hover:bg-gray-50/50">
+                      <tr key={p.id} className="hover:bg-bone">
                         <td className="px-6 py-4">
                           {p.image ? (
-                            <img src={p.image} alt={p.title} className="w-14 h-10 rounded-lg object-cover border border-gray-200" />
+                            <img src={p.image} alt={p.title} className="w-14 h-10 rounded-md object-cover border border-line" />
                           ) : (
-                            <div className="w-14 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400 text-xs font-semibold">No Image</div>
+                            <div className="w-14 h-10 rounded-md bg-bone flex items-center justify-center text-ink-muted text-xs font-semibold">No Image</div>
                           )}
                         </td>
-                        <td className="px-6 py-4 font-semibold text-gray-900">{p.title}</td>
-                        <td className="px-6 py-4 text-sm text-gray-500">{p.category}</td>
-                        <td className="px-6 py-4 font-semibold text-emerald-600">{fmt(p.dailyEarnings)}/day</td>
-                        <td className="px-6 py-4 text-sm font-medium text-gray-700">{fmt(p.minInvestment)}</td>
+                        <td className="px-6 py-4 font-semibold text-ink">{p.title}</td>
+                        <td className="px-6 py-4 text-sm text-ink-soft">{p.category}</td>
+                        <td className="px-6 py-4 font-semibold text-olive-deep">{fmt(p.dailyEarnings)}/day</td>
+                        <td className="px-6 py-4 text-sm font-medium text-ink-soft">{fmt(p.minInvestment)}</td>
                         <td className="px-6 py-4">
                           <Badge color={p.status === 'completed' ? 'green' : p.status === 'in_progress' ? 'blue' : 'yellow'}>
                             {p.status?.replace('_', ' ')}
@@ -551,10 +551,10 @@ export default function AdminDashboard() {
                         </td>
                         <td className="px-6 py-4 text-right">
                           <div className="flex gap-2 justify-end">
-                            <button onClick={() => startEditProj(p)} className="p-2 text-blue-600 hover:bg-blue-50 rounded-xl transition" title="Edit">
+                            <button onClick={() => startEditProj(p)} className="p-2 text-ink hover:bg-ink/5 rounded-md transition" title="Edit">
                               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                             </button>
-                            <button onClick={() => deleteProject(p.id)} className="p-2 text-rose-500 hover:bg-rose-50 rounded-xl transition" title="Delete">
+                            <button onClick={() => deleteProject(p.id)} className="p-2 text-clay hover:bg-clay/10 rounded-md transition" title="Delete">
                               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
                             </button>
                           </div>
@@ -568,48 +568,48 @@ export default function AdminDashboard() {
           </section>
 
           {/* 2. PENDING PAYMENTS CONFIRMATION QUEUE */}
-          <section id="approvals" className="bg-white rounded-2xl shadow-sm border border-gray-150 p-6 space-y-6">
-            <div className="border-b border-gray-100 pb-4">
-              <h2 className="text-2xl font-bold text-[#0D3B66]">Payment Approvals Queue</h2>
-              <p className="text-sm text-gray-500 mt-1">Review pending investment payments submitted by clients</p>
+          <section id="approvals" className="bg-paper rounded-lg shadow-card border border-line p-6 space-y-6">
+            <div className="border-b border-line pb-4">
+              <h2 className="text-2xl font-heading text-ink">Payment Approvals Queue</h2>
+              <p className="text-sm text-ink-soft mt-1">Review pending investment payments submitted by clients</p>
             </div>
 
             {loadingData ? (
-              <div className="text-center py-6 text-gray-400">Loading...</div>
+              <div className="text-center py-6 text-ink-muted">Loading...</div>
             ) : pendingInvs.length === 0 ? (
-              <div className="text-center py-8 text-gray-400 bg-gray-50 rounded-2xl border border-dashed border-gray-300">
+              <div className="text-center py-8 text-ink-muted bg-bone rounded-lg border border-dashed border-line">
                 No pending payments waiting for approval.
               </div>
             ) : (
-              <div className="overflow-x-auto border border-gray-150 rounded-xl">
+              <div className="overflow-x-auto border border-line rounded-md">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-gray-50 border-b border-gray-100">
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Client</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Project</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Amount</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">M-Pesa Reference</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Date</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase"></th>
+                    <tr className="bg-bone border-b border-line">
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Client</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Project</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Amount</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">M-Pesa Reference</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Date</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label"></th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
+                  <tbody className="divide-y divide-line">
                     {pendingInvs.map(inv => (
-                      <tr key={inv._id} className="hover:bg-gray-50/50">
+                      <tr key={inv._id} className="hover:bg-bone">
                         <td className="px-6 py-4">
-                          <p className="font-semibold text-gray-900">{inv.userId?.name || 'Unnamed Client'}</p>
-                          <p className="text-xs text-gray-450">{inv.userId?.email}</p>
+                          <p className="font-semibold text-ink">{inv.userId?.name || 'Unnamed Client'}</p>
+                          <p className="text-xs text-ink-muted">{inv.userId?.email}</p>
                         </td>
-                        <td className="px-6 py-4 font-medium text-gray-800">{inv.projectId?.title || 'Unknown Project'}</td>
-                        <td className="px-6 py-4 font-bold text-gray-900">{fmt(inv.amount)}</td>
-                        <td className="px-6 py-4 font-mono text-sm text-blue-600 bg-blue-50/50 rounded px-2.5 py-1 w-fit">{inv.paymentReference}</td>
-                        <td className="px-6 py-4 text-xs text-gray-500">{new Date(inv.createdAt).toLocaleString()}</td>
+                        <td className="px-6 py-4 font-medium text-ink">{inv.projectId?.title || 'Unknown Project'}</td>
+                        <td className="px-6 py-4 font-bold text-ink">{fmt(inv.amount)}</td>
+                        <td className="px-6 py-4 font-mono text-sm text-ink bg-bone rounded px-2.5 py-1 w-fit">{inv.paymentReference}</td>
+                        <td className="px-6 py-4 text-xs text-ink-soft">{new Date(inv.createdAt).toLocaleString()}</td>
                         <td className="px-6 py-4 text-right">
                           <div className="flex gap-2 justify-end">
-                            <button onClick={() => approveInvestment(inv._id)} className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-4 py-2 rounded-xl transition shadow-sm">
+                            <button onClick={() => approveInvestment(inv._id)} className="bg-olive hover:bg-olive-deep text-paper font-semibold text-xs px-4 py-2 rounded-md transition shadow-sm">
                               Confirm & Approve
                             </button>
-                            <button onClick={() => rejectInvestment(inv._id)} className="border border-rose-300 text-rose-600 hover:bg-rose-50 font-semibold text-xs px-4 py-2 rounded-xl transition">
+                            <button onClick={() => rejectInvestment(inv._id)} className="border border-clay/30 text-clay-deep hover:bg-clay/10 font-semibold text-xs px-4 py-2 rounded-md transition">
                               Reject
                             </button>
                           </div>
@@ -623,39 +623,39 @@ export default function AdminDashboard() {
           </section>
 
           {/* 3. REGISTERED CLIENTS MANAGER */}
-          <section id="clients" className="bg-white rounded-2xl shadow-sm border border-gray-150 p-6 space-y-6">
-            <div className="border-b border-gray-100 pb-4">
-              <h2 className="text-2xl font-bold text-[#0D3B66]">Registered Clients Manager</h2>
-              <p className="text-sm text-gray-500 mt-1">Review registered profiles and adjust investment metrics</p>
+          <section id="clients" className="bg-paper rounded-lg shadow-card border border-line p-6 space-y-6">
+            <div className="border-b border-line pb-4">
+              <h2 className="text-2xl font-heading text-ink">Registered Clients Manager</h2>
+              <p className="text-sm text-ink-soft mt-1">Review registered profiles and adjust investment metrics</p>
             </div>
 
             {/* Client Metric Editor Form Modal Overlay */}
             {editingClient && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0D3B66]/30 backdrop-blur-sm p-4">
-                <form onSubmit={saveClientMetrics} className="bg-white rounded-2xl shadow-xl border border-gray-200 max-w-md w-full p-6 space-y-4 animate-in fade-in zoom-in-95 duration-200">
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/40 backdrop-blur-sm p-4">
+                <form onSubmit={saveClientMetrics} className="bg-paper rounded-lg shadow-lift border border-line max-w-md w-full p-6 space-y-4 animate-in fade-in zoom-in-95 duration-200">
                   <div>
-                    <h3 className="font-bold text-xl text-[#0D3B66]">Edit Client Balance & Profit</h3>
-                    <p className="text-xs text-gray-500 mt-1">Adjust figures manually for {editingClient.name} ({editingClient.email})</p>
+                    <h3 className="font-heading text-xl text-ink">Edit Client Balance & Profit</h3>
+                    <p className="text-xs text-ink-soft mt-1">Adjust figures manually for {editingClient.name} ({editingClient.email})</p>
                   </div>
                   <div className="space-y-3">
                     <div>
-                      <label className="block text-xs font-semibold text-gray-600 mb-1">Account Balance ($)</label>
-                      <input type="number" value={clientForm.balance} onChange={e => setClientForm({ ...clientForm, balance: Number(e.target.value) })} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" min="0" step="0.01" required />
+                      <label className="block text-xs font-semibold text-ink-soft mb-1">Account Balance ($)</label>
+                      <input type="number" value={clientForm.balance} onChange={e => setClientForm({ ...clientForm, balance: Number(e.target.value) })} className="input-field text-sm" min="0" step="0.01" required />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-gray-600 mb-1">Daily Investment Profit ($/day)</label>
-                      <input type="number" value={clientForm.dailyProfit} onChange={e => setClientForm({ ...clientForm, dailyProfit: Number(e.target.value) })} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" min="0" step="0.01" required />
+                      <label className="block text-xs font-semibold text-ink-soft mb-1">Daily Investment Profit ($/day)</label>
+                      <input type="number" value={clientForm.dailyProfit} onChange={e => setClientForm({ ...clientForm, dailyProfit: Number(e.target.value) })} className="input-field text-sm" min="0" step="0.01" required />
                     </div>
                     <div>
-                      <label className="block text-xs font-semibold text-gray-600 mb-1">Total Active Investment ($)</label>
-                      <input type="number" value={clientForm.totalInvested} onChange={e => setClientForm({ ...clientForm, totalInvested: Number(e.target.value) })} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500" min="0" step="0.01" required />
+                      <label className="block text-xs font-semibold text-ink-soft mb-1">Total Active Investment ($)</label>
+                      <input type="number" value={clientForm.totalInvested} onChange={e => setClientForm({ ...clientForm, totalInvested: Number(e.target.value) })} className="input-field text-sm" min="0" step="0.01" required />
                     </div>
                   </div>
                   <div className="flex gap-3 pt-2">
-                    <button type="submit" disabled={savingClient} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl disabled:opacity-60 flex-1 transition">
+                    <button type="submit" disabled={savingClient} className="bg-ink hover:bg-olive-deep text-paper font-semibold text-sm px-5 py-2.5 rounded-md disabled:opacity-60 flex-1 transition">
                       {savingClient ? 'Updating...' : 'Save Changes'}
                     </button>
-                    <button type="button" onClick={() => setEditingClient(null)} className="px-5 py-2.5 text-sm rounded-xl border border-gray-300 text-gray-700 hover:bg-gray-100 flex-1 transition">
+                    <button type="button" onClick={() => setEditingClient(null)} className="px-5 py-2.5 text-sm rounded-md border border-line text-ink-soft hover:bg-bone flex-1 transition">
                       Cancel
                     </button>
                   </div>
@@ -664,37 +664,37 @@ export default function AdminDashboard() {
             )}
 
             {loadingData ? (
-              <div className="text-center py-6 text-gray-400">Loading...</div>
+              <div className="text-center py-6 text-ink-muted">Loading...</div>
             ) : clients.length === 0 ? (
-              <div className="text-center py-8 text-gray-400">No clients registered in the system yet.</div>
+              <div className="text-center py-8 text-ink-muted">No clients registered in the system yet.</div>
             ) : (
-              <div className="overflow-x-auto border border-gray-150 rounded-xl">
+              <div className="overflow-x-auto border border-line rounded-md">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-gray-50 border-b border-gray-100">
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Client</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Role</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Account Balance</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Daily Profit Rate</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase">Total Invested</th>
-                      <th className="px-6 py-3.5 text-xs font-bold text-gray-500 uppercase"></th>
+                    <tr className="bg-bone border-b border-line">
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Client</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Role</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Account Balance</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Daily Profit Rate</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label">Total Invested</th>
+                      <th className="px-6 py-3.5 text-xs font-semibold text-ink-muted uppercase tracking-label"></th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
+                  <tbody className="divide-y divide-line">
                     {clients.map(c => (
-                      <tr key={c._id} className="hover:bg-gray-50/50">
+                      <tr key={c._id} className="hover:bg-bone">
                         <td className="px-6 py-4">
-                          <p className="font-semibold text-gray-900">{c.name || 'Unnamed'}</p>
-                          <p className="text-xs text-gray-500">{c.email}</p>
+                          <p className="font-semibold text-ink">{c.name || 'Unnamed'}</p>
+                          <p className="text-xs text-ink-soft">{c.email}</p>
                         </td>
-                        <td className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-650">
+                        <td className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-ink-soft">
                           <Badge color={c.role === 'admin' ? 'purple' : 'gray'}>{c.role}</Badge>
                         </td>
-                        <td className="px-6 py-4 font-bold text-gray-900">{fmt(c.balance)}</td>
-                        <td className="px-6 py-4 font-semibold text-emerald-600">{fmt(c.dailyProfit)}/day</td>
-                        <td className="px-6 py-4 text-sm font-medium text-gray-700">{fmt(c.totalInvested)}</td>
+                        <td className="px-6 py-4 font-bold text-ink">{fmt(c.balance)}</td>
+                        <td className="px-6 py-4 font-semibold text-olive-deep">{fmt(c.dailyProfit)}/day</td>
+                        <td className="px-6 py-4 text-sm font-medium text-ink-soft">{fmt(c.totalInvested)}</td>
                         <td className="px-6 py-4 text-right">
-                          <button onClick={() => startEditClient(c)} className="text-blue-600 hover:text-blue-800 text-sm font-bold flex items-center gap-1 ml-auto" title="Adjust Balance/Profit">
+                          <button onClick={() => startEditClient(c)} className="text-ink hover:text-olive-deep text-sm font-bold flex items-center gap-1 ml-auto" title="Adjust Balance/Profit">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
                             Edit
                           </button>
@@ -708,67 +708,67 @@ export default function AdminDashboard() {
           </section>
 
           {/* 4. ADMIN PAYMENT AND WITHDRAWAL SETTINGS */}
-          <section id="settings" className="bg-white rounded-2xl shadow-sm border border-gray-150 p-6 space-y-6">
-            <div className="border-b border-gray-100 pb-4">
-              <h2 className="text-2xl font-bold text-[#0D3B66]">Global Investment settings</h2>
-              <p className="text-sm text-gray-500 mt-1">Configure payment details & withdrawal instruction panel displayed on the client dashboard</p>
+          <section id="settings" className="bg-paper rounded-lg shadow-card border border-line p-6 space-y-6">
+            <div className="border-b border-line pb-4">
+              <h2 className="text-2xl font-heading text-ink">Global Investment settings</h2>
+              <p className="text-sm text-ink-soft mt-1">Configure payment details & withdrawal instruction panel displayed on the client dashboard</p>
             </div>
             
             <form onSubmit={saveSettings} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1">M-Pesa Investment Paybill Number</label>
-                  <input value={settings.paybill} onChange={e => setSettings({ ...settings, paybill: e.target.value })} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500 font-medium" placeholder="Paybill number" required />
+                  <label className="block text-xs font-semibold text-ink-soft mb-1">M-Pesa Investment Paybill Number</label>
+                  <input value={settings.paybill} onChange={e => setSettings({ ...settings, paybill: e.target.value })} className="input-field text-sm font-medium" placeholder="Paybill number" required />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-gray-600 mb-1">M-Pesa Investment Account Number prefix</label>
-                  <input value={settings.accountNumber} onChange={e => setSettings({ ...settings, accountNumber: e.target.value })} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500 font-medium" placeholder="Account Prefix" required />
+                  <label className="block text-xs font-semibold text-ink-soft mb-1">M-Pesa Investment Account Number prefix</label>
+                  <input value={settings.accountNumber} onChange={e => setSettings({ ...settings, accountNumber: e.target.value })} className="input-field text-sm font-medium" placeholder="Account Prefix" required />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-xs font-semibold text-gray-600 mb-1">Custom Withdrawal Page instructions (Client View)</label>
-                  <textarea value={settings.withdrawalInstructions} onChange={e => setSettings({ ...settings, withdrawalInstructions: e.target.value })} rows={4} className="w-full bg-white border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-blue-500 resize-none leading-relaxed" placeholder="Tell clients how to make withdrawals (e.g. payout timelines, limits, contact methods)..." required />
+                  <label className="block text-xs font-semibold text-ink-soft mb-1">Custom Withdrawal Page instructions (Client View)</label>
+                  <textarea value={settings.withdrawalInstructions} onChange={e => setSettings({ ...settings, withdrawalInstructions: e.target.value })} rows={4} className="input-field text-sm resize-none leading-relaxed" placeholder="Tell clients how to make withdrawals (e.g. payout timelines, limits, contact methods)..." required />
                 </div>
               </div>
-              <button type="submit" disabled={savingSettings} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm px-6 py-2.5 rounded-xl disabled:opacity-60 transition shadow-sm">
+              <button type="submit" disabled={savingSettings} className="bg-ink hover:bg-olive-deep text-paper font-semibold text-sm px-6 py-2.5 rounded-md disabled:opacity-60 transition shadow-sm">
                 {savingSettings ? 'Saving Settings...' : 'Save Settings'}
               </button>
             </form>
           </section>
 
           {/* 5. COLLAPSIBLE OLD SITE CATALOG (For compatibility) */}
-          <section className="bg-white rounded-2xl shadow-sm border border-gray-150 p-6 space-y-4">
-            <button onClick={() => setShowOldCatalog(!showOldCatalog)} className="w-full flex items-center justify-between font-bold text-[#0D3B66] text-lg focus:outline-none">
+          <section className="bg-paper rounded-lg shadow-card border border-line p-6 space-y-4">
+            <button onClick={() => setShowOldCatalog(!showOldCatalog)} className="w-full flex items-center justify-between font-heading text-ink text-lg focus:outline-none">
               <span>Show Old Site Catalog (Materials & Products)</span>
               <svg className={`w-5 h-5 transition-transform duration-300 ${showOldCatalog ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
             </button>
 
             {showOldCatalog && (
               <div className="space-y-6 pt-4 animate-in slide-in-from-top-2 duration-300">
-                <div className="border-t border-gray-100 pt-4">
-                  <h3 className="font-bold text-[#0D3B66] mb-3">Materials</h3>
+                <div className="border-t border-line pt-4">
+                  <h3 className="font-heading text-ink mb-3">Materials</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {materials.map(m => (
-                      <div key={m._id} className="p-3 bg-gray-50 rounded-xl border border-gray-200 flex justify-between items-center text-sm">
+                      <div key={m._id} className="p-3 bg-bone rounded-md border border-line flex justify-between items-center text-sm">
                         <div>
-                          <p className="font-semibold text-gray-800">{m.name}</p>
-                          <p className="text-xs text-gray-500">{m.category}</p>
+                          <p className="font-semibold text-ink">{m.name}</p>
+                          <p className="text-xs text-ink-soft">{m.category}</p>
                         </div>
-                        <span className="font-bold text-[#0D3B66]">{fmt(m.price)}</span>
+                        <span className="font-heading text-ink">{fmt(m.price)}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                <div className="border-t border-gray-100 pt-4">
-                  <h3 className="font-bold text-[#0D3B66] mb-3">Products</h3>
+                <div className="border-t border-line pt-4">
+                  <h3 className="font-heading text-ink mb-3">Products</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {products.map(p => (
-                      <div key={p._id} className="p-3 bg-gray-50 rounded-xl border border-gray-200 flex justify-between items-center text-sm">
+                      <div key={p._id} className="p-3 bg-bone rounded-md border border-line flex justify-between items-center text-sm">
                         <div>
-                          <p className="font-semibold text-gray-800">{p.name}</p>
-                          <p className="text-xs text-gray-500">{p.category}</p>
+                          <p className="font-semibold text-ink">{p.name}</p>
+                          <p className="text-xs text-ink-soft">{p.category}</p>
                         </div>
-                        <span className="font-bold text-[#0D3B66]">{fmt(p.price)}</span>
+                        <span className="font-heading text-ink">{fmt(p.price)}</span>
                       </div>
                     ))}
                   </div>

@@ -25,17 +25,17 @@ export default function AIInnovation() {
   return (
     <Layout>
       <HeroSection
-        title="AI & Innovation at Let Investments"
-        subtitle="We are pioneering the application of artificial intelligence in investment management, engineering, and smart agriculture to deliver unprecedented value for our clients."
-        ctaText="Book AI Consultation"
+        eyebrow="AI & Innovation"
+        title="Applied intelligence, real outcomes"
+        subtitle="We bring artificial intelligence to investment management, engineering, and smart agriculture — building tools that deliver measurable value for our clients."
+        ctaText="Book a consultation"
         ctaLink="/contact"
-        secondaryCtaText="View Our Products"
+        secondaryCtaText="View our products"
         secondaryCtaLink="/products"
-        backgroundColor="bg-gradient-to-br from-let-blue via-let-accent to-let-blue"
       />
 
       {/* AI Highlights - Alternating */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom space-y-24">
           <AIHighlight
             title="Intelligent Portfolio Management"
@@ -80,24 +80,25 @@ export default function AIInnovation() {
       </section>
 
       {/* Features Grid */}
-      <section className="section-padding bg-let-light">
+      <section className="section-padding bg-bone">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">AI Capabilities</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              The core technology capabilities powering our AI-driven services.
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">Capabilities</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">What powers our platform</h2>
+            <p className="text-lg text-ink-soft leading-relaxed">
+              The core technology capabilities behind our AI-driven services.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f, i) => (
-              <div key={i} className="card group">
-                <div className="w-12 h-12 bg-gradient-to-br from-let-blue to-let-accent rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div key={i} className="card">
+                <div className="text-clay mb-4">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <h3 className="text-lg font-heading font-bold text-let-blue mb-2">{f.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{f.description}</p>
+                <h3 className="text-lg font-heading text-ink mb-2">{f.title}</h3>
+                <p className="text-ink-soft text-sm leading-relaxed">{f.description}</p>
               </div>
             ))}
           </div>
@@ -105,23 +106,21 @@ export default function AIInnovation() {
       </section>
 
       {/* Innovation Timeline */}
-      <section className="section-padding bg-white">
-        <div className="container-custom max-w-4xl mx-auto">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">Our Innovation Journey</h2>
-            <p className="text-xl text-gray-600">Six years of pushing AI boundaries in African financial services.</p>
+      <section className="section-padding bg-paper">
+        <div className="container-custom max-w-3xl mx-auto">
+          <div className="mb-14">
+            <div className="eyebrow mb-5">Our Journey</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">Six years of pushing boundaries</h2>
+            <p className="text-lg text-ink-soft leading-relaxed">In AI for African financial services.</p>
           </div>
-          <div className="relative">
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-let-blue/20"></div>
-            <div className="space-y-8">
+          <div className="border-l border-line">
+            <div className="space-y-10">
               {timeline.map((item, i) => (
-                <div key={i} className="flex gap-6 pl-16 relative">
-                  <div className="absolute left-6 top-2 w-4 h-4 rounded-full bg-let-blue border-4 border-white shadow-md"></div>
-                  <div className="card flex-1">
-                    <div className="text-let-green font-bold text-sm mb-1">{item.year}</div>
-                    <h3 className="text-lg font-heading font-bold text-let-blue mb-2">{item.title}</h3>
-                    <p className="text-gray-600 text-sm">{item.description}</p>
-                  </div>
+                <div key={i} className="relative pl-8">
+                  <span className="absolute left-0 top-1.5 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-clay ring-4 ring-paper"></span>
+                  <div className="text-xs font-semibold uppercase tracking-label text-clay mb-1.5">{item.year}</div>
+                  <h3 className="text-lg font-heading text-ink mb-1.5">{item.title}</h3>
+                  <p className="text-ink-soft text-sm leading-relaxed max-w-xl">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -130,18 +129,20 @@ export default function AIInnovation() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-r from-let-blue via-let-accent to-let-green py-20">
-        <div className="container-custom text-center">
-          <h2 className="text-4xl font-heading font-bold text-white mb-6">Ready to Embrace AI?</h2>
-          <p className="text-xl text-white/80 mb-10 max-w-xl mx-auto">
-            Let our AI experts design a custom solution for your business needs.
-          </p>
-          <Link href="/contact" className="bg-white text-let-blue hover:bg-let-light font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300 inline-flex items-center">
-            Book a Free Consultation
-            <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </Link>
+      <section className="bg-ink py-24">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-heading text-paper mb-6 leading-tight">Ready to put AI to work?</h2>
+            <p className="text-lg text-paper/70 mb-10 max-w-xl mx-auto leading-relaxed">
+              Our team will design a custom solution for your business.
+            </p>
+            <Link href="/contact" className="bg-paper text-ink hover:bg-bone font-medium px-7 py-3.5 rounded-md transition-colors inline-flex items-center justify-center">
+              Book a consultation
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
         </div>
       </section>
     </Layout>

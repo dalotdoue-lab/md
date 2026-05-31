@@ -7,7 +7,6 @@ const pillars = [
   {
     title: 'Consistent Returns',
     description: 'Our diversified portfolios have delivered 14-18% average annual returns over the past 5 years, consistently outperforming the market.',
-    color: 'text-emerald-600 bg-emerald-50',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -17,7 +16,6 @@ const pillars = [
   {
     title: 'Transparent Reporting',
     description: 'Real-time dashboards, monthly statements, and quarterly audited reports give you complete visibility into your investments at all times.',
-    color: 'text-blue-600 bg-blue-50',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
@@ -27,7 +25,6 @@ const pillars = [
   {
     title: 'Expert Management',
     description: 'Our CFA-certified portfolio managers and AI-driven analytics work together to optimize your portfolio around the clock.',
-    color: 'text-amber-600 bg-amber-50',
     icon: (
       <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
@@ -80,31 +77,33 @@ export default function Investors() {
   return (
     <Layout>
       <HeroSection
-        title="Invest with Confidence"
-        subtitle="Join 500+ investors who trust Let Investments to grow their wealth with proven strategies, cutting-edge AI, and complete transparency."
-        ctaText="Start Investing"
+        eyebrow="For Investors"
+        title="Invest with confidence"
+        subtitle="Join 500+ investors who trust Let Investments to grow their wealth — with proven strategies, applied AI, and complete transparency."
+        ctaText="Start investing"
         ctaLink="/get-started"
-        secondaryCtaText="View Our Process"
+        secondaryCtaText="View our process"
         secondaryCtaLink="#process"
       />
 
       {/* Why Invest */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">Why Invest With Us?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Three pillars that set Let Investments apart from the rest.
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">Why Us</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">Three pillars that set us apart</h2>
+            <p className="text-lg text-ink-soft leading-relaxed">
+              What you get when you invest with Let Investments.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {pillars.map((p, i) => (
-              <div key={i} className="card text-center group hover:-translate-y-1 transition-transform duration-300">
-                <div className={`w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 ${p.color}`}>
+              <div key={i} className="card">
+                <div className="text-clay mb-5">
                   {p.icon}
                 </div>
-                <h3 className="text-xl font-heading font-bold text-let-blue mb-3">{p.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{p.description}</p>
+                <h3 className="text-xl font-heading text-ink mb-3">{p.title}</h3>
+                <p className="text-ink-soft leading-relaxed">{p.description}</p>
               </div>
             ))}
           </div>
@@ -112,21 +111,22 @@ export default function Investors() {
       </section>
 
       {/* Financial Highlights */}
-      <section className="section-padding bg-let-blue">
+      <section className="section-padding bg-ink">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-white mb-4">Financial Highlights</h2>
-            <p className="text-xl text-gray-300 max-w-xl mx-auto">
-              Numbers that tell our story of consistent, proven performance.
-            </p>
+          <div className="max-w-2xl mb-14">
+            <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-label text-paper/60 mb-5">
+              <span className="inline-block w-7 h-px bg-clay"></span>
+              By the Numbers
+            </div>
+            <h2 className="text-4xl md:text-5xl font-heading text-paper leading-tight">A track record of proven performance</h2>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 divide-paper/10 md:divide-x">
             {financials.map((f, i) => (
-              <div key={i} className="bg-white/10 rounded-2xl p-6 hover:bg-white/20 transition-colors duration-300">
-                <div className="text-4xl md:text-5xl font-heading font-extrabold text-white mb-2">
+              <div key={i} className="text-center md:px-4">
+                <div className="text-4xl md:text-5xl font-heading text-paper mb-2">
                   <AnimatedNumber value={f.value} prefix={f.prefix || ''} suffix={f.suffix || ''} />
                 </div>
-                <div className="text-gray-300 font-medium text-sm">{f.label}</div>
+                <div className="text-xs font-semibold uppercase tracking-label text-paper/50">{f.label}</div>
               </div>
             ))}
           </div>
@@ -134,23 +134,24 @@ export default function Investors() {
       </section>
 
       {/* Investment Process */}
-      <section id="process" className="section-padding bg-let-light">
+      <section id="process" className="section-padding bg-bone">
         <div className="container-custom">
-          <div className="text-center mb-14">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">How to Get Started</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              From sign-up to your first return in five simple steps.
+          <div className="max-w-2xl mb-14">
+            <div className="eyebrow mb-5">Getting Started</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">From sign-up to your first return</h2>
+            <p className="text-lg text-ink-soft leading-relaxed">
+              In five simple steps.
             </p>
           </div>
           <div className="max-w-3xl mx-auto space-y-6">
             {investmentSteps.map((step, i) => (
               <div key={i} className="flex gap-6 items-start">
-                <div className="w-12 h-12 flex-shrink-0 bg-let-blue rounded-full flex items-center justify-center text-white font-bold font-heading text-sm">
+                <div className="w-12 h-12 flex-shrink-0 bg-ink rounded-full flex items-center justify-center text-paper font-heading text-sm">
                   {step.step}
                 </div>
                 <div className="card flex-1">
-                  <h3 className="text-lg font-heading font-bold text-let-blue mb-2">{step.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                  <h3 className="text-lg font-heading text-ink mb-2">{step.title}</h3>
+                  <p className="text-ink-soft text-sm leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -159,11 +160,12 @@ export default function Investors() {
       </section>
 
       {/* Investor Form */}
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom max-w-2xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-heading font-bold text-let-blue mb-4">Register Your Interest</h2>
-            <p className="text-xl text-gray-600">
+          <div className="mb-10">
+            <div className="eyebrow mb-5">Get in Touch</div>
+            <h2 className="text-4xl md:text-5xl font-heading text-ink mb-4 leading-tight">Register your interest</h2>
+            <p className="text-lg text-ink-soft leading-relaxed">
               Tell us about your investment goals and our team will reach out within 24 hours.
             </p>
           </div>

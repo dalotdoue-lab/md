@@ -48,29 +48,33 @@ export default function Quote() {
   return (
     <Layout>
       {/* Header */}
-      <div className="bg-let-blue py-16">
-        <div className="container-custom max-w-2xl text-center">
-          <h1 className="text-4xl font-heading font-bold text-white mb-4">Request a Quote</h1>
-          <p className="text-xl text-gray-300">Get a customized proposal from our team in 24 hours.</p>
+      <div className="bg-ink py-20">
+        <div className="container-custom max-w-2xl">
+          <div className="flex items-center gap-2.5 text-xs font-semibold uppercase tracking-label text-paper/60 mb-5">
+            <span className="inline-block w-7 h-px bg-clay"></span>
+            Request a Quote
+          </div>
+          <h1 className="text-4xl md:text-5xl font-heading text-paper mb-4 leading-tight">Tell us what you're building</h1>
+          <p className="text-lg text-paper/70 leading-relaxed">Get a customized proposal from our team within 24 hours.</p>
         </div>
       </div>
 
-      <section className="section-padding bg-let-light">
+      <section className="section-padding bg-bone">
         <div className="container-custom max-w-3xl mx-auto">
           {submitted ? (
             <div className="card text-center py-16">
-              <div className="w-20 h-20 bg-let-green/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg className="w-10 h-10 text-let-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              <div className="text-olive mb-6 flex justify-center">
+                <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h2 className="text-3xl font-heading font-bold text-let-blue mb-4">Quote Request Submitted!</h2>
-              <p className="text-gray-600 mb-8 text-lg">
+              <h2 className="text-3xl font-heading text-ink mb-4">Quote request submitted</h2>
+              <p className="text-ink-soft mb-8 text-lg leading-relaxed">
                 Thank you, {projectDetails.name}. Our team will review your requirements and reach out within 24 hours.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/" className="btn-primary">Back to Home</Link>
-                <Link href="/contact" className="btn-outline">Contact Us</Link>
+                <Link href="/" className="btn-primary">Back to home</Link>
+                <Link href="/contact" className="btn-outline">Contact us</Link>
               </div>
             </div>
           ) : (
@@ -80,8 +84,8 @@ export default function Quote() {
                 {steps.map((s, i) => (
                   <div key={s.number} className="flex items-center">
                     <div className="flex flex-col items-center">
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm transition-all duration-300 ${
-                        step >= s.number ? 'bg-let-blue text-white' : 'bg-gray-200 text-gray-500'
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center font-heading text-sm transition-colors duration-300 ${
+                        step >= s.number ? 'bg-ink text-paper' : 'bg-bone text-ink-muted border border-line'
                       }`}>
                         {step > s.number ? (
                           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -89,12 +93,12 @@ export default function Quote() {
                           </svg>
                         ) : s.number}
                       </div>
-                      <span className={`text-xs mt-1 font-medium hidden sm:block ${step >= s.number ? 'text-let-blue' : 'text-gray-400'}`}>
+                      <span className={`text-xs mt-1.5 font-medium hidden sm:block ${step >= s.number ? 'text-ink' : 'text-ink-muted'}`}>
                         {s.label}
                       </span>
                     </div>
                     {i < steps.length - 1 && (
-                      <div className={`w-16 sm:w-24 h-0.5 mx-2 transition-colors duration-300 ${step > s.number ? 'bg-let-blue' : 'bg-gray-200'}`}></div>
+                      <div className={`w-16 sm:w-24 h-px mx-2 transition-colors duration-300 ${step > s.number ? 'bg-ink' : 'bg-line'}`}></div>
                     )}
                   </div>
                 ))}
@@ -104,32 +108,32 @@ export default function Quote() {
                 {/* Step 1: Select Services */}
                 {step === 1 && (
                   <div>
-                    <h2 className="text-2xl font-heading font-bold text-let-blue mb-2">Select Services</h2>
-                    <p className="text-gray-600 mb-6">Choose all services you're interested in. You can select multiple.</p>
+                    <h2 className="text-2xl font-heading text-ink mb-2">Select services</h2>
+                    <p className="text-ink-soft mb-6">Choose all the services you're interested in — you can select multiple.</p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                       {serviceOptions.map((service) => (
                         <button
                           key={service.id}
                           onClick={() => toggleService(service.id)}
-                          className={`p-4 rounded-xl border-2 text-left transition-all duration-200 ${
+                          className={`p-4 rounded-md border text-left transition-colors duration-200 ${
                             selectedServices.includes(service.id)
-                              ? 'border-let-blue bg-let-blue/5'
-                              : 'border-gray-200 hover:border-let-blue/40'
+                              ? 'border-olive bg-olive/5'
+                              : 'border-line hover:border-olive/50'
                           }`}
                         >
                           <div className="flex items-center gap-3">
-                            <div className={`w-5 h-5 rounded border-2 flex items-center justify-center flex-shrink-0 ${
-                              selectedServices.includes(service.id) ? 'bg-let-blue border-let-blue' : 'border-gray-300'
+                            <div className={`w-5 h-5 rounded border flex items-center justify-center flex-shrink-0 ${
+                              selectedServices.includes(service.id) ? 'bg-olive border-olive' : 'border-line'
                             }`}>
                               {selectedServices.includes(service.id) && (
-                                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="w-3 h-3 text-paper" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                                 </svg>
                               )}
                             </div>
                             <div>
-                              <div className="font-semibold text-let-blue">{service.label}</div>
-                              <div className="text-sm text-gray-400">Starting from ${service.basePrice.toLocaleString()}</div>
+                              <div className="font-semibold text-ink">{service.label}</div>
+                              <div className="text-sm text-ink-muted">Starting from ${service.basePrice.toLocaleString()}</div>
                             </div>
                           </div>
                         </button>
@@ -137,10 +141,10 @@ export default function Quote() {
                     </div>
 
                     {selectedServices.length > 0 && (
-                      <div className="bg-let-blue/5 rounded-xl p-4 mb-6 flex justify-between items-center">
-                        <span className="text-gray-600">{selectedServices.length} service(s) selected</span>
-                        <span className="font-bold text-let-blue text-lg">
-                          Estimated from: ${estimatedCost.toLocaleString()}
+                      <div className="bg-bone border border-line rounded-md p-4 mb-6 flex justify-between items-center gap-3">
+                        <span className="text-ink-soft text-sm">{selectedServices.length} service(s) selected</span>
+                        <span className="font-heading text-ink text-lg">
+                          Est. from ${estimatedCost.toLocaleString()}
                         </span>
                       </div>
                     )}
@@ -163,8 +167,8 @@ export default function Quote() {
                 {/* Step 2: Project Details */}
                 {step === 2 && (
                   <form onSubmit={(e) => { e.preventDefault(); setStep(3) }}>
-                    <h2 className="text-2xl font-heading font-bold text-let-blue mb-2">Project Details</h2>
-                    <p className="text-gray-600 mb-6">Tell us more about your project so we can provide an accurate quote.</p>
+                    <h2 className="text-2xl font-heading text-ink mb-2">Project details</h2>
+                    <p className="text-ink-soft mb-6">Tell us more about your project so we can provide an accurate quote.</p>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                       <div>
@@ -230,42 +234,42 @@ export default function Quote() {
                 {/* Step 3: Review */}
                 {step === 3 && (
                   <div>
-                    <h2 className="text-2xl font-heading font-bold text-let-blue mb-2">Review Your Request</h2>
-                    <p className="text-gray-600 mb-6">Please confirm your details before submitting.</p>
+                    <h2 className="text-2xl font-heading text-ink mb-2">Review your request</h2>
+                    <p className="text-ink-soft mb-6">Please confirm your details before submitting.</p>
 
                     <div className="space-y-4 mb-8">
-                      <div className="bg-let-light rounded-xl p-4">
-                        <h3 className="font-bold text-let-blue mb-3">Selected Services</h3>
+                      <div className="bg-bone border border-line rounded-md p-4">
+                        <h3 className="font-heading text-ink mb-3">Selected services</h3>
                         <div className="space-y-2">
                           {selectedServices.map(id => {
                             const service = serviceOptions.find(s => s.id === id)
                             return (
                               <div key={id} className="flex justify-between text-sm">
-                                <span className="text-gray-700">{service?.label}</span>
-                                <span className="font-semibold text-let-blue">from ${service?.basePrice.toLocaleString()}</span>
+                                <span className="text-ink-soft">{service?.label}</span>
+                                <span className="font-semibold text-ink">from ${service?.basePrice.toLocaleString()}</span>
                               </div>
                             )
                           })}
-                          <div className="border-t border-gray-200 pt-2 mt-2 flex justify-between font-bold">
-                            <span className="text-let-blue">Total Estimate</span>
-                            <span className="text-let-green text-lg">from ${estimatedCost.toLocaleString()}</span>
+                          <div className="border-t border-line pt-2 mt-2 flex justify-between items-baseline">
+                            <span className="text-ink font-semibold">Total estimate</span>
+                            <span className="font-heading text-ink text-lg">from ${estimatedCost.toLocaleString()}</span>
                           </div>
                         </div>
                       </div>
 
-                      <div className="bg-let-light rounded-xl p-4">
-                        <h3 className="font-bold text-let-blue mb-3">Contact Information</h3>
+                      <div className="bg-bone border border-line rounded-md p-4">
+                        <h3 className="font-heading text-ink mb-3">Contact information</h3>
                         <div className="grid grid-cols-2 gap-2 text-sm">
-                          <div className="text-gray-500">Name</div><div className="font-medium">{projectDetails.name}</div>
-                          <div className="text-gray-500">Email</div><div className="font-medium">{projectDetails.email}</div>
-                          {projectDetails.company && <><div className="text-gray-500">Company</div><div className="font-medium">{projectDetails.company}</div></>}
-                          {projectDetails.budget && <><div className="text-gray-500">Budget</div><div className="font-medium">{projectDetails.budget}</div></>}
-                          {projectDetails.timeline && <><div className="text-gray-500">Timeline</div><div className="font-medium">{projectDetails.timeline}</div></>}
+                          <div className="text-ink-muted">Name</div><div className="font-medium text-ink">{projectDetails.name}</div>
+                          <div className="text-ink-muted">Email</div><div className="font-medium text-ink">{projectDetails.email}</div>
+                          {projectDetails.company && <><div className="text-ink-muted">Company</div><div className="font-medium text-ink">{projectDetails.company}</div></>}
+                          {projectDetails.budget && <><div className="text-ink-muted">Budget</div><div className="font-medium text-ink">{projectDetails.budget}</div></>}
+                          {projectDetails.timeline && <><div className="text-ink-muted">Timeline</div><div className="font-medium text-ink">{projectDetails.timeline}</div></>}
                         </div>
                         {projectDetails.description && (
-                          <div className="mt-3 pt-3 border-t border-gray-200">
-                            <div className="text-gray-500 text-sm mb-1">Description</div>
-                            <p className="text-sm text-gray-700">{projectDetails.description}</p>
+                          <div className="mt-3 pt-3 border-t border-line">
+                            <div className="text-ink-muted text-sm mb-1">Description</div>
+                            <p className="text-sm text-ink-soft leading-relaxed">{projectDetails.description}</p>
                           </div>
                         )}
                       </div>

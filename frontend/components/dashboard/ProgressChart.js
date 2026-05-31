@@ -18,16 +18,16 @@ const ProgressChart = ({ milestones = [] }) => {
   const progressPercent = Math.round((completedCount / displayMilestones.length) * 100)
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-6">
+    <div className="bg-paper border border-line shadow-card rounded-lg p-6">
       <div className="flex justify-between items-center mb-6">
-        <h3 className="text-lg font-heading font-bold text-let-blue">Project Progress</h3>
-        <span className="text-2xl font-bold text-let-green">{progressPercent}%</span>
+        <h3 className="text-lg font-heading text-ink">Project progress</h3>
+        <span className="text-2xl font-heading text-olive-deep">{progressPercent}%</span>
       </div>
 
       {/* Overall Progress Bar */}
-      <div className="w-full bg-gray-200 rounded-full h-4 mb-8">
-        <div 
-          className="bg-let-green h-4 rounded-full transition-all duration-500"
+      <div className="w-full bg-line rounded-full h-2.5 mb-8">
+        <div
+          className="bg-olive h-2.5 rounded-full transition-all duration-500"
           style={{ width: `${progressPercent}%` }}
         ></div>
       </div>
@@ -35,27 +35,27 @@ const ProgressChart = ({ milestones = [] }) => {
       {/* Milestones Timeline */}
       <div className="relative">
         {/* Vertical Line */}
-        <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gray-200"></div>
+        <div className="absolute left-2 top-0 bottom-0 w-px bg-line"></div>
 
         <div className="space-y-6">
           {displayMilestones.map((milestone, index) => (
             <div key={index} className="relative flex items-start pl-10">
               {/* Circle Indicator */}
-              <div className={`absolute left-2 w-5 h-5 rounded-full border-4 border-white ${
-                milestone.completed ? 'bg-let-green' : 'bg-gray-300'
+              <div className={`absolute left-0 top-1 w-4 h-4 rounded-full ring-4 ring-paper ${
+                milestone.completed ? 'bg-olive' : 'bg-line'
               }`}></div>
-              
+
               <div className="flex-grow">
                 <div className="flex items-center justify-between">
-                  <h4 className={`font-semibold ${
-                    milestone.completed ? 'text-let-green' : 'text-gray-600'
+                  <h4 className={`font-heading ${
+                    milestone.completed ? 'text-ink' : 'text-ink-muted'
                   }`}>
                     {milestone.name}
                   </h4>
-                  <span className="text-sm text-gray-500">{milestone.date}</span>
+                  <span className="text-sm text-ink-muted">{milestone.date}</span>
                 </div>
                 {milestone.completed && (
-                  <p className="text-sm text-let-green mt-1">Completed</p>
+                  <p className="text-sm text-olive-deep mt-1">Completed</p>
                 )}
               </div>
             </div>

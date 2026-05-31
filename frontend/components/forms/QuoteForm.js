@@ -92,18 +92,18 @@ const QuoteForm = () => {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-8">
+    <div className="bg-paper rounded-lg border border-line shadow-card p-8">
       {/* Progress Steps */}
       <div className="flex items-center justify-between mb-8">
         {[1, 2, 3].map((s) => (
           <div key={s} className="flex items-center">
-            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
-              step >= s ? 'bg-let-blue text-white' : 'bg-gray-200 text-gray-500'
+            <div className={`w-10 h-10 rounded-full flex items-center justify-center font-heading transition-colors ${
+              step >= s ? 'bg-ink text-paper' : 'bg-bone text-ink-muted border border-line'
             }`}>
               {s}
             </div>
             {s < 3 && (
-              <div className={`w-16 sm:w-24 h-1 mx-2 ${step > s ? 'bg-let-blue' : 'bg-gray-200'}`}></div>
+              <div className={`w-16 sm:w-24 h-px mx-2 ${step > s ? 'bg-ink' : 'bg-line'}`}></div>
             )}
           </div>
         ))}
@@ -111,15 +111,15 @@ const QuoteForm = () => {
 
       {submitStatus === 'success' ? (
         <div className="text-center py-12">
-          <div className="w-20 h-20 mx-auto mb-6 bg-green-100 rounded-full flex items-center justify-center">
-            <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          <div className="text-olive mb-6 flex justify-center">
+            <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h3 className="text-2xl font-bold text-let-blue mb-4">Quote Request Submitted!</h3>
-          <p className="text-gray-600 mb-6">We'll review your requirements and get back to you within 24-48 hours.</p>
+          <h3 className="text-2xl font-heading text-ink mb-4">Quote request submitted</h3>
+          <p className="text-ink-soft mb-6">We'll review your requirements and get back to you within 24–48 hours.</p>
           <button onClick={() => { setSubmitStatus(null); setStep(1); setFormData({ ...formData, services: [] }) }} className="btn-primary">
-            Submit Another Request
+            Submit another request
           </button>
         </div>
       ) : (
@@ -127,26 +127,26 @@ const QuoteForm = () => {
           {/* Step 1: Service Selection */}
           {step === 1 && (
             <div>
-              <h3 className="text-xl font-bold text-let-blue mb-6">Select Services</h3>
+              <h3 className="text-xl font-heading text-ink mb-6">Select services</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {serviceOptions.map((service) => (
                   <label
                     key={service.id}
-                    className={`flex items-center p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                    className={`flex items-center p-4 border rounded-md cursor-pointer transition-colors ${
                       formData.services.includes(service.id)
-                        ? 'border-let-blue bg-blue-50'
-                        : 'border-gray-200 hover:border-let-blue'
+                        ? 'border-olive bg-olive/5'
+                        : 'border-line hover:border-olive/50'
                     }`}
                   >
                     <input
                       type="checkbox"
                       checked={formData.services.includes(service.id)}
                       onChange={() => handleServiceToggle(service.id)}
-                      className="w-5 h-5 text-let-blue"
+                      className="w-5 h-5 accent-olive"
                     />
                     <div className="ml-3">
-                      <span className="font-semibold text-gray-900">{service.name}</span>
-                      <span className="block text-sm text-gray-500">Starting at ${service.price.toLocaleString()}</span>
+                      <span className="font-semibold text-ink">{service.name}</span>
+                      <span className="block text-sm text-ink-muted">Starting at ${service.price.toLocaleString()}</span>
                     </div>
                   </label>
                 ))}
@@ -157,7 +157,7 @@ const QuoteForm = () => {
           {/* Step 2: Project Info */}
           {step === 2 && (
             <div>
-              <h3 className="text-xl font-bold text-let-blue mb-6">Project Information</h3>
+              <h3 className="text-xl font-heading text-ink mb-6">Project information</h3>
               <div className="space-y-4">
                 <div>
                   <label className="label">Project Name</label>
@@ -206,17 +206,17 @@ const QuoteForm = () => {
           {/* Step 3: Contact Info */}
           {step === 3 && (
             <div>
-              <h3 className="text-xl font-bold text-let-blue mb-6">Contact Information</h3>
-              
+              <h3 className="text-xl font-heading text-ink mb-6">Contact information</h3>
+
               {/* Estimated Cost Display */}
-              <div className="bg-let-light rounded-lg p-4 mb-6">
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-600">Estimated Cost Range:</span>
-                  <span className="text-2xl font-bold text-let-blue">
-                    ${(estimatedCost * 0.8).toLocaleString()} - ${(estimatedCost * 1.2).toLocaleString()}
+              <div className="bg-bone border border-line rounded-md p-4 mb-6">
+                <div className="flex justify-between items-center gap-3">
+                  <span className="text-ink-soft text-sm">Estimated cost range</span>
+                  <span className="text-2xl font-heading text-ink">
+                    ${(estimatedCost * 0.8).toLocaleString()} – ${(estimatedCost * 1.2).toLocaleString()}
                   </span>
                 </div>
-                <p className="text-sm text-gray-500 mt-2">*Final quote may vary based on detailed requirements</p>
+                <p className="text-sm text-ink-muted mt-2">Final quote may vary based on detailed requirements.</p>
               </div>
 
               <div className="space-y-4">

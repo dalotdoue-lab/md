@@ -25,26 +25,27 @@ export default function Products() {
   return (
     <Layout>
       <HeroSection
-        title="Smart Irrigation Products"
-        subtitle="IoT-powered hardware and AI-driven software solutions to maximize your farm's water efficiency and yield."
-        ctaText="Request a Demo"
+        eyebrow="Products"
+        title="Smart irrigation, end to end"
+        subtitle="IoT-powered hardware and AI-driven software to maximize your farm's water efficiency and yield."
+        ctaText="Request a demo"
         ctaLink="/contact"
-        secondaryCtaText="Get a Quote"
+        secondaryCtaText="Get a quote"
         secondaryCtaLink="/quote"
       />
 
-      <section className="section-padding bg-white">
+      <section className="section-padding bg-paper">
         <div className="container-custom">
           {/* Category Filter */}
-          <div className="flex flex-wrap gap-3 justify-center mb-10">
+          <div className="flex flex-wrap gap-2 mb-12 border-b border-line pb-4">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                className={`px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200 ${
                   activeCategory === cat
-                    ? 'bg-let-green text-white shadow-md'
-                    : 'bg-let-light text-gray-700 hover:bg-let-green/10'
+                    ? 'bg-ink text-paper'
+                    : 'text-ink-soft hover:bg-ink/5'
                 }`}
               >
                 {cat}
@@ -57,25 +58,28 @@ export default function Products() {
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
-                className="card cursor-pointer group hover:-translate-y-1 transition-all duration-300"
+                className="card cursor-pointer hover:-translate-y-0.5 hover:shadow-lift transition-all duration-300"
                 onClick={() => setSelectedProduct(product)}
               >
-                <div className="h-44 bg-gradient-to-br from-let-blue/10 to-let-green/10 rounded-xl mb-4 flex items-center justify-center group-hover:from-let-blue/20 group-hover:to-let-green/20 transition-all duration-300">
-                  <svg className="w-16 h-16 text-let-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="h-44 bg-bone rounded-md mb-5 flex items-center justify-center">
+                  <svg className="w-14 h-14 text-ink/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
                   </svg>
                 </div>
-                <div className="flex justify-between items-start mb-2">
-                  <span className="inline-block px-3 py-1 bg-let-green/10 text-let-green text-xs font-semibold rounded-full">
+                <div className="flex justify-between items-baseline mb-2">
+                  <span className="text-xs font-semibold uppercase tracking-label text-ink-muted">
                     {product.category}
                   </span>
-                  <span className="font-bold text-let-blue text-lg">{product.price}</span>
+                  <span className="font-heading text-ink text-lg">{product.price}</span>
                 </div>
-                <h3 className="text-xl font-heading font-bold text-let-blue mb-2">{product.name}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">{product.description}</p>
-                <button className="btn-outline w-full text-sm py-2">
-                  View Details
-                </button>
+                <h3 className="text-xl font-heading text-ink mb-2">{product.name}</h3>
+                <p className="text-ink-soft text-sm leading-relaxed mb-5">{product.description}</p>
+                <span className="text-sm font-medium text-olive-deep inline-flex items-center">
+                  View details
+                  <svg className="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </span>
               </div>
             ))}
           </div>
@@ -85,40 +89,40 @@ export default function Products() {
       {/* Product Modal */}
       {selectedProduct && (
         <div
-          className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-ink/60 z-50 flex items-center justify-center p-4"
           onClick={() => setSelectedProduct(null)}
         >
           <div
-            className="bg-white rounded-2xl max-w-lg w-full p-8 shadow-2xl"
+            className="bg-paper rounded-lg max-w-lg w-full p-8 shadow-lift border border-line"
             onClick={e => e.stopPropagation()}
           >
             <div className="flex justify-between items-start mb-6">
               <div>
-                <span className="inline-block px-3 py-1 bg-let-green/10 text-let-green text-xs font-semibold rounded-full mb-2">
+                <span className="block text-xs font-semibold uppercase tracking-label text-ink-muted mb-2">
                   {selectedProduct.category}
                 </span>
-                <h2 className="text-2xl font-heading font-bold text-let-blue">{selectedProduct.name}</h2>
+                <h2 className="text-2xl font-heading text-ink">{selectedProduct.name}</h2>
               </div>
-              <button onClick={() => setSelectedProduct(null)} className="p-2 hover:bg-gray-100 rounded-lg">
-                <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <button onClick={() => setSelectedProduct(null)} className="p-2 hover:bg-ink/5 rounded-md">
+                <svg className="w-6 h-6 text-ink-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
-            <div className="h-40 bg-gradient-to-br from-let-blue/10 to-let-green/10 rounded-xl flex items-center justify-center mb-6">
-              <svg className="w-16 h-16 text-let-blue/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="h-40 bg-bone rounded-md flex items-center justify-center mb-6">
+              <svg className="w-16 h-16 text-ink/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
               </svg>
             </div>
-            <p className="text-gray-600 leading-relaxed mb-6">{selectedProduct.description}</p>
-            <div className="flex items-center justify-between border-t border-gray-100 pt-4">
-              <span className="text-3xl font-heading font-bold text-let-blue">{selectedProduct.price}</span>
+            <p className="text-ink-soft leading-relaxed mb-6">{selectedProduct.description}</p>
+            <div className="flex items-center justify-between border-t border-line pt-5">
+              <span className="text-3xl font-heading text-ink">{selectedProduct.price}</span>
               <div className="flex gap-3">
                 <Link href="/contact" className="btn-outline text-sm py-2 px-4">
-                  Request Demo
+                  Request demo
                 </Link>
                 <Link href="/quote" className="btn-secondary text-sm py-2 px-4">
-                  Get Quote
+                  Get quote
                 </Link>
               </div>
             </div>
@@ -127,15 +131,17 @@ export default function Products() {
       )}
 
       {/* CTA */}
-      <section className="bg-let-green py-16">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl font-heading font-bold text-white mb-4">Need a Custom Solution?</h2>
-          <p className="text-white/80 mb-8 text-lg max-w-xl mx-auto">
-            We design bespoke irrigation systems for farms of all sizes. Contact us to discuss your specific requirements.
-          </p>
-          <Link href="/contact" className="bg-white text-let-green hover:bg-let-light font-bold px-8 py-4 rounded-lg text-lg transition-all duration-300 inline-flex items-center">
-            Contact Our Team
-          </Link>
+      <section className="bg-ink py-24">
+        <div className="container-custom">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-heading text-paper mb-6 leading-tight">Need a custom solution?</h2>
+            <p className="text-lg text-paper/70 mb-10 max-w-xl mx-auto leading-relaxed">
+              We design bespoke irrigation systems for farms of all sizes. Tell us what you're working with.
+            </p>
+            <Link href="/contact" className="bg-paper text-ink hover:bg-bone font-medium px-7 py-3.5 rounded-md transition-colors inline-flex items-center justify-center">
+              Contact our team
+            </Link>
+          </div>
         </div>
       </section>
     </Layout>

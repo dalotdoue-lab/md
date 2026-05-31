@@ -33,35 +33,38 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <nav className="bg-paper/90 backdrop-blur border-b border-line sticky top-0 z-50">
       <div className="container-custom flex justify-between items-center py-4">
 
         {/* Logo */}
         <Link href="/">
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-let-blue rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xl">L</span>
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-ink rounded-md flex items-center justify-center">
+              <span className="text-paper font-heading text-xl leading-none">L</span>
             </div>
-            <div>
-              <span className="text-let-blue font-bold text-xl block leading-none">Let</span>
-              <span className="text-let-green text-xs font-semibold tracking-widest">INVESTMENTS</span>
+            <div className="leading-none">
+              <span className="text-ink font-heading text-xl block">Let</span>
+              <span className="text-ink-muted text-[0.65rem] font-semibold uppercase tracking-label">Investments</span>
             </div>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex items-center space-x-1">
+        <div className="hidden lg:flex items-center gap-1">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200
+              className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200
                 ${isActive(item.href)
-                  ? 'bg-let-blue text-white'
-                  : 'text-gray-700 hover:bg-let-light hover:text-let-blue'
+                  ? 'text-ink'
+                  : 'text-ink-soft hover:text-ink'
                 }`}
             >
               {item.name}
+              {isActive(item.href) && (
+                <span className="absolute left-3 right-3 -bottom-0.5 h-px bg-clay"></span>
+              )}
             </Link>
           ))}
 
@@ -94,7 +97,7 @@ const Navbar = () => {
         {/* Mobile Button */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-let-light"
+          className="lg:hidden p-2 rounded-md text-ink hover:bg-ink/5"
           aria-label="Toggle menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -109,15 +112,15 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden border-t border-gray-100 px-4 pb-4 pt-2 space-y-1 bg-white">
+        <div className="lg:hidden border-t border-line px-4 pb-4 pt-2 space-y-1 bg-paper">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors
                 ${isActive(item.href)
-                  ? 'bg-let-blue text-white'
-                  : 'text-gray-700 hover:bg-let-light'
+                  ? 'bg-ink text-paper'
+                  : 'text-ink-soft hover:bg-ink/5'
                 }`}
               onClick={() => setIsOpen(false)}
             >
@@ -125,7 +128,7 @@ const Navbar = () => {
             </Link>
           ))}
 
-          <div className="pt-2 border-t border-gray-100 space-y-2">
+          <div className="pt-2 border-t border-line space-y-2">
             {!user && (
               <Link href="/login" className="btn-primary w-full text-center block">
                 Login

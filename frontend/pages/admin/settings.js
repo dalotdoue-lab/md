@@ -97,35 +97,35 @@ export default function AdminSettings() {
 
   if (authLoading || (!user && !authLoading)) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-let-light">
-        <div className="h-12 w-12 animate-spin rounded-full border-4 border-let-blue border-t-transparent" />
+      <div className="flex min-h-screen items-center justify-center bg-bone">
+        <div className="h-10 w-10 animate-spin rounded-full border-2 border-olive border-t-transparent" />
       </div>
     )
   }
 
   return (
     <>
-      <Head><title>Payment Settings - Kingstone Investments</title></Head>
-      <div className="min-h-screen bg-let-light">
-        <header className="sticky top-0 z-40 bg-let-blue px-6 py-4 text-white shadow-lg">
+      <Head><title>Payment Settings — Let Investments</title></Head>
+      <div className="min-h-screen bg-bone">
+        <header className="sticky top-0 z-40 bg-ink px-6 py-4 text-paper border-b border-paper/10">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
             <Link href="/admin/dashboard" className="flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-white/20 font-bold">K</div>
+              <div className="flex h-10 w-10 items-center justify-center rounded-md bg-paper text-ink font-heading text-lg">L</div>
               <div>
-                <p className="font-heading font-bold leading-none">Kingstone Investments</p>
-                <p className="text-xs text-blue-200">Admin settings</p>
+                <p className="font-heading leading-none">Let Investments</p>
+                <p className="text-[0.65rem] font-semibold uppercase tracking-label text-paper/50">Admin Settings</p>
               </div>
             </Link>
             <div className="flex items-center gap-3">
-              <span className="hidden rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs text-blue-100 sm:block">
+              <span className="hidden rounded-md border border-paper/15 bg-paper/10 px-3 py-1 text-xs text-paper/70 sm:block">
                 {user?.email}
               </span>
               <button
                 type="button"
                 onClick={signOut}
-                className="rounded-lg bg-white/10 px-4 py-2 text-sm font-semibold transition hover:bg-white/20"
+                className="rounded-md bg-paper/10 px-4 py-2 text-sm font-medium transition hover:bg-paper/20"
               >
-                Sign Out
+                Sign out
               </button>
             </div>
           </div>
@@ -134,30 +134,30 @@ export default function AdminSettings() {
         <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
           <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-let-green">Payment controls</p>
-              <h1 className="mt-1 text-3xl font-heading font-bold text-let-blue">Deposit Settings</h1>
-              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-gray-600">
+              <div className="eyebrow mb-3">Payment Controls</div>
+              <h1 className="mt-1 text-3xl font-heading text-ink leading-tight">Deposit settings</h1>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">
                 These M-Pesa details are shown to clients when they open the deposit flow.
               </p>
             </div>
             <Link
               href="/admin/dashboard"
-              className="inline-flex items-center justify-center rounded-lg border border-let-blue px-4 py-2 text-sm font-semibold text-let-blue transition hover:bg-let-blue hover:text-white"
+              className="btn-outline text-sm"
             >
               Back to dashboard
             </Link>
           </div>
 
           {loading ? (
-            <div className="rounded-xl border border-gray-100 bg-white p-10 text-center text-gray-500 shadow-sm">
+            <div className="rounded-lg border border-line bg-paper p-10 text-center text-ink-soft shadow-card">
               Loading settings...
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
-              <section className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                <div className="border-b border-gray-100 pb-5">
-                  <h2 className="text-xl font-heading font-bold text-let-blue">M-Pesa Deposit Details</h2>
-                  <p className="mt-1 text-sm text-gray-500">Clients will copy these details before submitting a deposit request.</p>
+              <section className="rounded-lg border border-line bg-paper p-6 shadow-card">
+                <div className="border-b border-line pb-5">
+                  <h2 className="text-xl font-heading text-ink">M-Pesa Deposit Details</h2>
+                  <p className="mt-1 text-sm text-ink-soft">Clients will copy these details before submitting a deposit request.</p>
                 </div>
 
                 <div className="mt-6 grid gap-5 sm:grid-cols-2">
@@ -181,7 +181,7 @@ export default function AdminSettings() {
                       value={form.mpesaAccountNumber}
                       onChange={handleChange}
                       className="input-field font-mono"
-                      placeholder="KINGSTONE"
+                      placeholder="LET-INVEST"
                       required
                     />
                   </div>
@@ -193,7 +193,7 @@ export default function AdminSettings() {
                       value={form.mpesaAccountName}
                       onChange={handleChange}
                       className="input-field"
-                      placeholder="Kingstone Investments"
+                      placeholder="Let Investments"
                       required
                     />
                   </div>
@@ -201,19 +201,19 @@ export default function AdminSettings() {
               </section>
 
               <aside className="space-y-6">
-                <section className="rounded-xl border border-gray-100 bg-white p-6 shadow-sm">
-                  <h2 className="text-lg font-heading font-bold text-let-blue">Client Access</h2>
-                  <label className="mt-5 flex items-start gap-3 rounded-xl border border-gray-200 bg-gray-50 p-4">
+                <section className="rounded-lg border border-line bg-paper p-6 shadow-card">
+                  <h2 className="text-lg font-heading text-ink">Client Access</h2>
+                  <label className="mt-5 flex items-start gap-3 rounded-md border border-line bg-bone p-4">
                     <input
                       type="checkbox"
                       name="systemDown"
                       checked={form.systemDown}
                       onChange={handleChange}
-                      className="mt-1 h-4 w-4 accent-let-blue"
+                      className="mt-1 h-4 w-4 accent-olive"
                     />
                     <span>
-                      <span className="block text-sm font-bold text-gray-800">Pause deposits and investing</span>
-                      <span className="mt-1 block text-xs leading-relaxed text-gray-500">
+                      <span className="block text-sm font-semibold text-ink">Pause deposits and investing</span>
+                      <span className="mt-1 block text-xs leading-relaxed text-ink-soft">
                         Clients will see a maintenance notice while this is enabled.
                       </span>
                     </span>
@@ -232,31 +232,31 @@ export default function AdminSettings() {
                   </div>
                 </section>
 
-                <section className="rounded-xl border border-emerald-100 bg-emerald-50 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-700">Client preview</p>
-                  <div className="mt-4 space-y-3 rounded-xl border border-emerald-100 bg-white p-4">
+                <section className="rounded-lg border border-olive/20 bg-olive/10 p-5">
+                  <p className="text-xs font-semibold uppercase tracking-label text-olive-deep">Client preview</p>
+                  <div className="mt-4 space-y-3 rounded-md border border-line bg-paper p-4">
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-400">Paybill</p>
-                      <p className="mt-1 font-mono text-sm font-bold text-gray-900">{form.mpesaPaybill || 'Not set'}</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-label text-ink-muted">Paybill</p>
+                      <p className="mt-1 font-mono text-sm font-semibold text-ink">{form.mpesaPaybill || 'Not set'}</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-400">Account number</p>
-                      <p className="mt-1 font-mono text-sm font-bold text-gray-900">{form.mpesaAccountNumber || 'Not set'}</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-label text-ink-muted">Account number</p>
+                      <p className="mt-1 font-mono text-sm font-semibold text-ink">{form.mpesaAccountNumber || 'Not set'}</p>
                     </div>
                     <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-gray-400">Account name</p>
-                      <p className="mt-1 text-sm font-bold text-gray-900">{form.mpesaAccountName || 'Not set'}</p>
+                      <p className="text-[11px] font-semibold uppercase tracking-label text-ink-muted">Account name</p>
+                      <p className="mt-1 text-sm font-semibold text-ink">{form.mpesaAccountName || 'Not set'}</p>
                     </div>
                   </div>
                 </section>
 
                 {error && (
-                  <div className="rounded-xl border border-red-200 bg-red-50 p-4 text-sm text-red-700">
+                  <div className="rounded-md border border-clay/30 bg-clay/10 p-4 text-sm text-clay-deep">
                     {error}
                   </div>
                 )}
                 {saved && (
-                  <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-sm font-semibold text-emerald-700">
+                  <div className="rounded-md border border-olive/30 bg-olive/10 p-4 text-sm font-semibold text-olive-deep">
                     Settings saved successfully.
                   </div>
                 )}
@@ -264,7 +264,7 @@ export default function AdminSettings() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="w-full rounded-xl bg-let-blue px-4 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-let-accent disabled:cursor-not-allowed disabled:opacity-60"
+                  className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60"
                 >
                   {saving ? 'Saving...' : 'Save payment settings'}
                 </button>
