@@ -1,0 +1,43 @@
+{
+  "name": "kingstone-investments-fullstack",
+  "version": "1.0.0",
+  "description": "Kingstone Investments - Fullstack Application (Frontend + Backend + Database)",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "db:setup": "cd backend && npx prisma generate && npx prisma db push && npm run seed",
+    "db:generate": "cd backend && npx prisma generate",
+    "db:migrate": "cd backend && npx prisma migrate dev --name init",
+    "db:push": "cd backend && npx prisma db push",
+    "db:seed": "cd backend && npm run seed",
+    "mongo:seed": "npm --prefix backend run seed:mongo",
+    "build": "npm --prefix frontend install && npm --prefix frontend run build",
+    "backend": "cd backend && npm run dev",
+    "backend:start": "cd backend && npm start",
+    "dev": "npm --prefix frontend run dev",
+    "frontend": "cd frontend && npm run dev",
+    "frontend:build": "cd frontend && npm run build",
+    "dev:fullstack": "npm run dev:backend & npm run dev:frontend",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "start": "echo Use npm run dev:fullstack to start both servers",
+    "kill:ports": "lsof -ti :5000 | xargs kill -9 2>/dev/null || true; lsof -ti :3000 | xargs kill -9 2>/dev/null || true",
+    "status": "npm run check:ports",
+    "check:ports": "echo === Port Status === && lsof -i :5000 2>/dev/null || echo Port 5000 (Backend): FREE && lsof -i :3000 2>/dev/null || echo Port 3000 (Frontend): FREE",
+    "test:api": "curl -s http://localhost:5000/api/health | head -c 200"
+  },
+  "keywords": [
+    "investment",
+    "africa",
+    "fullstack",
+    "nextjs",
+    "express",
+    "prisma"
+  ],
+  "author": "Kingstone Investments",
+  "license": "MIT",
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "prisma": "^5.22.0"
+  }
+}
