@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore'
 import { getStorage } from 'firebase/storage'
 
 const defaultFirebaseConfig = {
-  apiKey: 'AIzaSyAwBPNLjFjOMrnEsKNVxN3F-toFjV_kUgs',
-  authDomain: 'stkpush-cff51.firebaseapp.com',
-  projectId: 'stkpush-cff51',
-  storageBucket: 'stkpush-cff51.firebasestorage.app',
-  messagingSenderId: '567137630101',
-  appId: '1:567137630101:web:1234567890',
+  apiKey: 'YOUR_CARSIE_API_KEY_HERE',
+  authDomain: 'carsie-b446b.firebaseapp.com',
+  projectId: 'carsie-b446b',
+  storageBucket: 'carsie-b446b.firebasestorage.app',
+  messagingSenderId: '56769530663',
+  appId: '1:56769530663:web:be9c57ca2db194b9d3b702',
 }
 
 const firebaseConfig = {
