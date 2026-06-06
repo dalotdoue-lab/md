@@ -7,19 +7,22 @@ git config user.name "Dalot Doue"
 
 echo === Staging all changes ===
 git add -A
-
-echo === Git status ===
 git status
 
 echo === Committing ===
 git commit -m "Setup: correct Firebase credentials, Supabase keys, fix next.config.js, create .env.local"
 
-echo === Pushing to GitHub ===
-git push https://dalotdoue-lab:Mboka%402024@github.com/dalotdoue-lab/md.git main
+echo === Pushing to GitHub (using credential manager) ===
+git push origin main
+echo Git push exit code: %errorlevel%
+
+echo === Installing frontend dependencies ===
+cd frontend
+call npm install
+echo NPM install done
 
 echo === Starting Next.js dev server ===
-cd frontend
-start cmd /k "npm run dev"
+start "Next.js Dev Server" cmd /k "npm run dev"
 
-echo === Done! Dev server starting in new window ===
+echo === Done! Check the new window for dev server output ===
 pause

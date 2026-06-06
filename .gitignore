@@ -30,6 +30,7 @@ Thumbs.db
 
 # Firebase service account keys
 *-firebase-adminsdk-*.json
+backend/service-account.json
 
 # Prisma
 backend/prisma/dev.db
